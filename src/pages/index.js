@@ -1,22 +1,62 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState, useEffect } from 'react';
+// import { Link } from 'gatsby';
+// import '../sass/styles.scss';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+// import Image from '../components/image';
+import SEO from '../components/seo';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+import Header from '../components/Header';
+import Intro from '../components/Intro';
+import Values from '../components/Values';
 
-export default IndexPage
+export const Context = React.createContext();
+
+const IndexPage = () => {
+  const [language, setLanguage] = useState('en');
+
+  useEffect(
+    prev => {
+      // Проверяем хранилище
+      if (!language) {
+        localStorage.setItem('lang', language);
+      }
+      // Меняем язык если не совпадают значения
+      if (prev !== language) {
+        localStorage.setItem('lang', language);
+      }
+    },
+    [language]
+  );
+
+  const changeLanguageHadler = value => {
+    setLanguage(value);
+  };
+
+  const helmet = {
+    lang: language,
+    theme: 'dark',
+    title: 'Cinemeye Vision Studio | Helsinki',
+    description: 'Cinematography & Media Production',
+    meta: {
+      url: 'https://cinemeye.com',
+      image: 'https://cinemeye.com/images/og.png',
+    },
+  };
+
+  return (
+    <Context.Provider value={language}>
+      <SEO
+        lang={helmet.lang}
+        theme={helmet.theme}
+        title={helmet.title}
+        description={helmet.description}
+        meta={helmet.meta}
+      />
+      <Header langHandler={changeLanguageHadler} />
+      <Intro />
+      <Values />
+    </Context.Provider>
+  );
+};
+
+export default IndexPage;

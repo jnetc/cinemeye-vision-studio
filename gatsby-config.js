@@ -5,7 +5,11 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-playground`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -13,22 +17,58 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Cinemeye Vision Studio`,
+        short_name: `C.V. Studio`,
+        description: `Cinematography & Media Production`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#1f1f1f`,
+        theme_color: `#1f1f1f`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`,
+        icons: [
+          {
+            src: `/icons/android-icon-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+          {
+            src: `/icons/maskable-icon-196x196.png`,
+            type: `image/png`,
+            sizes: `196x196`,
+            purpose: `maskable any`,
+          },
+          {
+            src: `/icons/android-icon-192x192.png`,
+            type: `image/png`,
+            sizes: `192x192`,
+          },
+          {
+            src: `/icons/apple-icon-180x180.png`,
+            type: `image/png`,
+            sizes: `180x180`,
+          },
+          {
+            src: `/icons/favicon-32x32.png`,
+            type: `image/png`,
+            sizes: `32x32`,
+          },
+          {
+            src: `/icons/favicon-16x16.png`,
+            type: `image/png`,
+            sizes: `16x16`,
+          },
+        ],
+        // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
+    ///// this (optional) plugin enables PWA + Offline functionality
+    ///// To learn more, visit: https://gatsby.dev/offline
+    ///// Important: For the web app manifest to be cached,
+    ///// we’ll need to list gatsby-plugin-manifest
+    ///// BEFORE gatsby-plugin-offline.
     // `gatsby-plugin-offline`,
   ],
-}
+};
