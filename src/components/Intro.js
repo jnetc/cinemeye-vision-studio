@@ -1,4 +1,3 @@
-// import Link from 'gatsby';
 import React, { useEffect, useState } from 'react';
 // Styles
 import '../sass/components/intro.scss';

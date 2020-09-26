@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
-// Context
-import { Context } from '../../pages/index';
+import React from 'react';
+// Global Storage
+import { useStore } from '../Store';
 
-const Languages = ({ langHandler }) => {
-  const ctx = useContext(Context);
+const Languages = () => {
+  const store = useStore();
 
+  console.log(store);
   const langs = [
     { name: 'en', lang: 'English' },
     { name: 'no', lang: 'Norsk' },
@@ -12,20 +13,22 @@ const Languages = ({ langHandler }) => {
     { name: 'sv', lang: 'Svenska' },
   ];
 
-  const languages = langs.map(lang => {
+  const languages = langs.map(l => {
     return (
       <button
         type="button"
-        key={lang.name}
-        className={ctx === lang.name ? 'lang act-lang' : 'lang'}
-        onClick={() => langHandler(lang.name)}>
-        {lang.lang}
+        key={l.name}
+        className={store?.lang === l.name ? 'lang act-lang' : 'lang'}
+        onClick={() => {
+          store.langHandler(l.name);
+        }}>
+        {l.lang}
       </button>
     );
   });
   return (
     <div id="lang-btn">
-      {ctx?.toUpperCase()}
+      {store?.lang.toUpperCase()}
       <div id="langs">{languages}</div>
     </div>
   );

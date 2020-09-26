@@ -7,12 +7,10 @@ import NavLink from './Header/NavLink';
 import Languages from './Header/Languages';
 
 // Header Component
-const Header = ({ langHandler }) => {
+const Header = () => {
   // All Links
   const [location, setLocation] = useState('');
   useEffect(() => {
-    // const xx = setLocation(window.location.hash);
-    console.log(location);
     setLocation(window.location.hash); // Get location name
   }, [location]);
 
@@ -38,7 +36,7 @@ const Header = ({ langHandler }) => {
       <nav className="navigation">
         <Logo linkHandler={linkHandler} />
         <ul>{links}</ul>
-        <Languages langHandler={langHandler} />
+        <Languages />
       </nav>
     </header>
   );

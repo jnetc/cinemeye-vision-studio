@@ -1,45 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 // import Image from '../components/image';
 // SEO Component
 import SEO from '../components/seo';
 // Components
-import Modal from '../components/Modal';
+// import { Store } from '../components/Store';
+// import Modal from '../components/Modal';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
 import Values from '../components/Values';
 // Initial Context
-export const Context = React.createContext();
+// export const Context = React.createContext();
+// import { useStore } from '../components/Store';
 
-const IndexPage = () => {
-  const [language, setLanguage] = useState('');
-  const [modal, setModal] = useState(false);
+const IndexPage = ({ lang }) => {
+  // const { lang } = useStore();
+  // console.log(lang);
+  // console.log(GlobalContext);
+  // const [language, setLanguage] = useState('');
+  // const [modal, setModal] = useState(false);
 
-  useEffect(() => {
-    let ls = localStorage.getItem('lang');
-    // Проверяем хранилище
-    if (!ls) {
-      localStorage.setItem('lang', 'en');
-      setLanguage('en');
-      return;
-    }
-    setLanguage(ls);
-  }, []);
+  // useEffect(() => {
+  //   let ls = localStorage.getItem('lang');
+  //   // Проверяем хранилище
+  //   if (!ls) {
+  //     localStorage.setItem('lang', 'en');
+  //     setLanguage('en');
+  //     return;
+  //   }
+  //   setLanguage(ls);
+  // }, []);
 
-  // Проверяем предыдущее состояние
-  useEffect(
-    prev => {
-      if (prev !== language) localStorage.setItem('lang', language);
-    },
-    [language]
-  );
+  // // Проверяем предыдущее состояние
+  // useEffect(
+  //   prev => {
+  //     if (prev !== language) localStorage.setItem('lang', language);
+  //   },
+  //   [language]
+  // );
   // ОБработчик для смены языка
-  const changeLanguageHandler = value => setLanguage(value);
+  // const changeLanguageHandler = value => setLanguage(value);
 
   const helmet = {
-    lang: language,
+    lang: lang,
     theme: 'dark',
-    modal,
     title: 'Cinemeye Vision Studio | Helsinki',
     description: 'Cinematography & Media Production',
     meta: {
@@ -49,7 +53,7 @@ const IndexPage = () => {
   };
 
   return (
-    <Context.Provider value={language} modal={modal}>
+    <>
       <SEO
         lang={helmet.lang}
         theme={helmet.theme}
@@ -58,10 +62,10 @@ const IndexPage = () => {
         meta={helmet.meta}
       />
       {/* <Modal /> */}
-      <Header langHandler={changeLanguageHandler} />
+      <Header />
       <Intro />
       <Values />
-    </Context.Provider>
+    </>
   );
 };
 
