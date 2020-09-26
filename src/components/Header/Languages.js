@@ -1,23 +1,34 @@
 import React, { useContext } from 'react';
-import { Link } from 'gatsby';
+// Context
 import { Context } from '../../pages/index';
 
-const Languages = ({ langs, langHandler }) => {
+const Languages = ({ langHandler }) => {
   const ctx = useContext(Context);
 
+  const langs = [
+    { name: 'en', lang: 'English' },
+    { name: 'no', lang: 'Norsk' },
+    { name: 'fi', lang: 'Suomi' },
+    { name: 'sv', lang: 'Svenska' },
+  ];
+
   const languages = langs.map(lang => {
-    console.log({ lang: ctx }, lang.name);
     return (
-      <Link
-        to="/"
+      <button
+        type="button"
         key={lang.name}
         className={ctx === lang.name ? 'lang act-lang' : 'lang'}
         onClick={() => langHandler(lang.name)}>
         {lang.lang}
-      </Link>
+      </button>
     );
   });
-
-  return <ul id="langs">{languages}</ul>;
+  return (
+    <div id="lang-btn">
+      {ctx?.toUpperCase()}
+      <div id="langs">{languages}</div>
+    </div>
+  );
 };
+
 export default Languages;

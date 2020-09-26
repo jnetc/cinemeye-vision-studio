@@ -1,40 +1,45 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'gatsby';
-// import '../sass/styles.scss';
 
 // import Image from '../components/image';
+// SEO Component
 import SEO from '../components/seo';
-
+// Components
+import Modal from '../components/Modal';
 import Header from '../components/Header';
 import Intro from '../components/Intro';
 import Values from '../components/Values';
-
+// Initial Context
 export const Context = React.createContext();
 
 const IndexPage = () => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('');
+  const [modal, setModal] = useState(false);
 
+  useEffect(() => {
+    let ls = localStorage.getItem('lang');
+    // Проверяем хранилище
+    if (!ls) {
+      localStorage.setItem('lang', 'en');
+      setLanguage('en');
+      return;
+    }
+    setLanguage(ls);
+  }, []);
+
+  // Проверяем предыдущее состояние
   useEffect(
     prev => {
-      // Проверяем хранилище
-      if (!language) {
-        localStorage.setItem('lang', language);
-      }
-      // Меняем язык если не совпадают значения
-      if (prev !== language) {
-        localStorage.setItem('lang', language);
-      }
+      if (prev !== language) localStorage.setItem('lang', language);
     },
     [language]
   );
-
-  const changeLanguageHadler = value => {
-    setLanguage(value);
-  };
+  // ОБработчик для смены языка
+  const changeLanguageHandler = value => setLanguage(value);
 
   const helmet = {
     lang: language,
     theme: 'dark',
+    modal,
     title: 'Cinemeye Vision Studio | Helsinki',
     description: 'Cinematography & Media Production',
     meta: {
@@ -44,7 +49,7 @@ const IndexPage = () => {
   };
 
   return (
-    <Context.Provider value={language}>
+    <Context.Provider value={language} modal={modal}>
       <SEO
         lang={helmet.lang}
         theme={helmet.theme}
@@ -52,7 +57,8 @@ const IndexPage = () => {
         description={helmet.description}
         meta={helmet.meta}
       />
-      <Header langHandler={changeLanguageHadler} />
+      {/* <Modal /> */}
+      <Header langHandler={changeLanguageHandler} />
       <Intro />
       <Values />
     </Context.Provider>

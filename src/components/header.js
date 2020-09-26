@@ -1,34 +1,32 @@
-import { Link } from 'gatsby';
-import React, { useState, useEffect, useContext } from 'react';
-
+import React, { useState, useEffect } from 'react';
+// Styles
 import '../sass/components/header.scss';
-import logo from '../images/svg/logo.svg';
+// Components
+import Logo from './Header/Logo';
 import NavLink from './Header/NavLink';
 import Languages from './Header/Languages';
-import { Context } from '../pages/index';
 
 // Header Component
 const Header = ({ langHandler }) => {
-  const [location, setLocation] = useState('');
-  // Languages
-  const language = useContext(Context);
-  const langs = [
-    { name: 'en', lang: 'English' },
-    { name: 'no', lang: 'Norsk' },
-    { name: 'fi', lang: 'Suomi' },
-    { name: 'sv', lang: 'Svenska' },
-  ];
   // All Links
+  const [location, setLocation] = useState('');
   useEffect(() => {
+    // const xx = setLocation(window.location.hash);
+    console.log(location);
     setLocation(window.location.hash); // Get location name
   }, [location]);
+
   const names = ['Intro', 'Values', 'Plans', `Meet us`];
+
+  const linkHandler = value => {
+    setLocation(value);
+  };
+
   const links = names.map(link => {
     if (location === '') setLocation('#intro');
-
     return (
       <li key={link}>
-        <NavLink data={link} location={location}>
+        <NavLink data={link} location={location} linkHandler={linkHandler}>
           {link}
         </NavLink>
       </li>
@@ -38,15 +36,9 @@ const Header = ({ langHandler }) => {
   return (
     <header>
       <nav className="navigation">
-        <Link id="logo" to="/">
-          <img src={logo} alt="logo" />
-        </Link>
+        <Logo linkHandler={linkHandler} />
         <ul>{links}</ul>
-        <div id="lang-btn">
-          {language.toUpperCase()}
-
-          <Languages langs={langs} langHandler={langHandler} />
-        </div>
+        <Languages langHandler={langHandler} />
       </nav>
     </header>
   );

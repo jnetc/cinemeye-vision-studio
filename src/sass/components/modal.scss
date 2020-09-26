@@ -1,0 +1,20 @@
+@import '../colors.scss';
+
+#modal {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  overflow: hidden;
+  // background-color: black;
+  background: transparentize(black, 0.1);
+  z-index: 1000;
+}
+
+body.modal-show {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}

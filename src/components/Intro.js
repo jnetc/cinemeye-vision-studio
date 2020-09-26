@@ -1,7 +1,8 @@
 // import Link from 'gatsby';
 import React, { useEffect, useState } from 'react';
-
+// Styles
 import '../sass/components/intro.scss';
+// Components
 import bg from '../images/regular/intro-regular.jpg';
 import PlayButton from './icons/Play';
 
@@ -34,6 +35,7 @@ const Intro = () => {
         onMouseLeave={() => setExist(false)}>
         <PlayButton />
       </div>
+      <div id="scroll-icon" />
     </section>
   );
 };

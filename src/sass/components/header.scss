@@ -79,7 +79,7 @@ header {
       align-items: flex-start;
       position: absolute;
       top: 0px;
-      right: -35px;
+      right: 0px;
       opacity: 0;
       background: $white;
       border-radius: 5px;
@@ -87,20 +87,13 @@ header {
       transform: translate3d(0px, -15px, 0px);
       transition: all 0.3s ease-in-out;
       pointer-events: none;
-      // &::before {
-      //   content: '';
-      //   width: 0;
-      //   height: 0;
-      //   position: absolute;
-      //   top: -10px;
-      //   right: 15px;
-      //   border-style: solid;
-      //   border-width: 0 8px 10px 8px;
-      //   border-color: transparent transparent $white transparent;
-      // }
       .lang {
         padding: 5px 10px;
-        margin: 5px 15px;
+        margin: 5px 15px 5px 25px;
+        position: relative;
+        outline: none;
+        border: none;
+        background: inherit;
         color: $black;
         font-size: 1rem;
         font-weight: 500;
@@ -113,7 +106,18 @@ header {
           color: $middle-grey;
         }
         &.act-lang {
-          color: $middle-grey;
+          // color: $middle-grey;
+          &::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 0 5px 8px;
+            border-color: transparent transparent transparent $middle-grey;
+            position: absolute;
+            top: 8px;
+            left: -5px;
+          }
         }
       }
     }

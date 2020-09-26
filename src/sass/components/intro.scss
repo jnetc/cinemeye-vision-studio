@@ -112,4 +112,49 @@
       transition: all 0.3s ease-in-out;
     }
   }
+  #scroll-icon {
+    width: 28px;
+    height: 46px;
+    grid-column: 3;
+    grid-row: 4;
+    position: relative;
+    align-self: flex-end;
+    margin: 0 auto 70px;
+    border: 3px solid $dark-grey;
+    border-radius: 50px;
+    &::before {
+      content: '';
+      width: 4px;
+      height: 10px;
+      position: absolute;
+      top: 7px;
+      left: 9px;
+      background: $dark-grey;
+      border-radius: 50px;
+      animation: scroll-anim 3s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes scroll-anim {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  10% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(0, 15px, 0);
+    opacity: 1;
+  }
+  80% {
+    transform: translate3d(0, 15px, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 15px, 0);
+    opacity: 0;
+  }
 }
