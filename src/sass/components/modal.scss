@@ -1,19 +1,79 @@
 @import '../colors.scss';
+@import '../sizes.scss';
 
 #modal {
   width: 100vw;
   height: 100vh;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   position: fixed;
   overflow: hidden;
-  // background-color: black;
-  background: transparentize(black, 0.1);
+  background: transparentize(black, 0.15);
   z-index: 1000;
+  &.show {
+    display: flex;
+  }
+  & span#close {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    &::after {
+      content: '';
+      width: 5px;
+      height: 50px;
+      position: absolute;
+      top: 25px;
+      left: 50px;
+      background-color: $middle-grey;
+      transition: all 0.3s ease-in-out;
+      transform: rotate(45deg);
+    }
+    &::before {
+      content: '';
+      width: 5px;
+      height: 50px;
+      position: absolute;
+      top: 25px;
+      left: 50px;
+      background-color: $middle-grey;
+      transition: all 0.3s ease-in-out;
+      transform: rotate(-45deg);
+    }
+    &:hover {
+      &::after {
+        background-color: $white;
+        transform: rotate(-45deg);
+      }
+      &::before {
+        background-color: $white;
+        transform: rotate(45deg);
+      }
+    }
+    @media screen and (max-width: $phones),
+      screen and (max-width: $tablets) and (orientation: landscape) {
+      width: 60px;
+      height: 60px;
+      &::after {
+        top: 5px;
+        left: 26px;
+      }
+      &::before {
+        top: 5px;
+        left: 26px;
+      }
+    }
+  }
+  iframe {
+    width: 80vw;
+    height: 80vh;
+  }
 }
 
-body.modal-show {
+.modal-show {
   overflow: hidden;
   width: 100vw;
   height: 100vh;

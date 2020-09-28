@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlayButton = () => (
+const PlayButtonIcon = () => (
   <svg
     width="50"
     height="55"
@@ -10,4 +10,4 @@ const PlayButton = () => (
   </svg>
 );
 
-export default PlayButton;
+export default PlayButtonIcon;

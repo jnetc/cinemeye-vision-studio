@@ -3,11 +3,15 @@ import React, { useEffect, useState } from 'react';
 import '../sass/components/intro.scss';
 // Components
 import bg from '../images/regular/intro-regular.jpg';
-import PlayButton from './icons/Play';
+import PlayButtonIcon from './icons/Play';
+
+// Context
+import { useStore } from '../components/Store';
 
 const Intro = () => {
   const [exist, setExist] = useState(false);
   const [addClass, setAddClass] = useState('intro-title');
+  const ctx = useStore();
 
   useEffect(() => {
     if (exist) {
@@ -26,14 +30,14 @@ const Intro = () => {
         <h1>We make</h1>
         <h2>Cinematography & Media Production</h2>
       </div>
-      <div
-        role="button"
-        tabIndex={0}
+      <button
+        type="button"
         className="play-btn"
         onMouseEnter={() => setExist(true)}
-        onMouseLeave={() => setExist(false)}>
-        <PlayButton />
-      </div>
+        onMouseLeave={() => setExist(false)}
+        onClick={() => ctx.modalHandler({ active: true, data: ctx.videoUrl })}>
+        <PlayButtonIcon />
+      </button>
       <div id="scroll-icon" />
     </section>
   );

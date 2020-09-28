@@ -1,5 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 
+// Параметры состояния по умолчанию
+const youtubeFilter = `autoplay=1&iv_load_policy=3&showinfo=0&rel=0`;
+
+const state = {
+  language: 'fi',
+  theme: 'dark',
+  modal: { active: false },
+  fetchData: lang => ({ data: lang }),
+  videoUrl: `https://www.youtube.com/embed/VV9xSx4danU?${youtubeFilter}`,
+};
+
 export const Context = React.createContext();
 
 // Языковый хук
@@ -9,34 +20,39 @@ export const useStore = () => {
 
 // Создаем глобальные состояния для Index
 export const Store = ({ children }) => {
-  const [language, setLanguage] = useState('');
-  // const [modal, setModal] = useState(false);
+  const [lang, setLang] = useState('');
+  const [modal, setModal] = useState(state.modal);
+  const [theme] = useState(state.theme);
 
   // Определение языка
   useEffect(() => {
-    let ls = localStorage.getItem('lang');
+    let langLS = localStorage.getItem('lang');
     // Проверяем хранилище
-    if (!ls) {
-      localStorage.setItem('lang', 'en');
-      setLanguage('en');
+    if (!langLS) {
+      localStorage.setItem('lang', state.language);
+      setLang(state.language);
       return;
     }
-    setLanguage(ls);
+    setLang(langLS);
   }, []);
 
   // Проверяем предыдущее состояние
   useEffect(
     prev => {
-      if (prev !== language) localStorage.setItem('lang', language);
+      if (prev !== lang) localStorage.setItem('lang', lang);
     },
-    [language]
+    [lang]
   );
 
   return (
     <Context.Provider
       value={{
-        lang: language,
-        langHandler: value => setLanguage(value),
+        lang,
+        langHandler: value => setLang(value),
+        theme,
+        modal,
+        modalHandler: obj => setModal(obj),
+        videoUrl: state.videoUrl,
       }}>
       {children}
     </Context.Provider>

@@ -1,4 +1,5 @@
 @import './colors.scss';
+@import './sizes.scss';
 
 *,
 ::before,
@@ -40,10 +41,17 @@ a {
   background-color: $bg-dark;
 }
 
+h1,
+h2 {
+  text-transform: uppercase;
+}
 h1 {
   font-weight: bold;
   font-size: 4rem;
   color: $white;
+  @media screen and (max-width: $tablets) {
+    font-size: 3.2rem;
+  }
 }
 h2 {
   font-size: 2rem;

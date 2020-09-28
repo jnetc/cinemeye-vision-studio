@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 // import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, meta, lang, title, theme }) {
+function SEO({ description, meta, lang, title, theme, modal }) {
   // const { site } = useStaticQuery(
   //   graphql`
   //     query {
@@ -20,7 +20,7 @@ function SEO({ description, meta, lang, title, theme }) {
   return (
     <Helmet>
       <html lang={lang} amp />
-      <body className={theme} />
+      <body className={modal ? `${theme} modal-show` : theme} />
       <title>{title}</title>
       {/* Primary Meta Tags */}
       <meta

@@ -1,4 +1,5 @@
 @import '../colors.scss';
+@import '../sizes.scss';
 
 header {
   width: 100%;
@@ -12,23 +13,37 @@ header {
 }
 
 .navigation {
-  width: 1920px;
+  width: 100%;
   height: 100px;
   display: grid;
   grid-template-columns: 130px 1fr 60px;
   align-items: center;
   padding: 0 24px;
   position: relative;
-  @media screen and (max-width: 1920px) {
-    width: 100%;
+  @media screen and (min-width: $large-monitor) {
+    width: 1920px;
   }
-  a#logo {
-    width: 130px;
+  @media screen and (max-width: $tablets) {
+    height: 70px;
+  }
+  @media screen and (max-width: $phones) {
+    height: 60px;
+    padding: 0 10px;
+  }
+  #logo img {
+    width: 132px;
+    @media screen and (max-width: $tablets) {
+      width: 110px;
+    }
   }
   ul {
+    grid-column: 2;
     display: flex;
     margin-left: auto;
     margin-right: 35px;
+    @media screen and (max-width: $tablets) {
+      display: none;
+    }
     li {
       a.nav-link {
         margin: 0 5px;
@@ -51,20 +66,21 @@ header {
   #lang-btn {
     width: 45px;
     height: 30px;
+    grid-column: 3;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: auto;
+    margin-left: auto;
     border-radius: 5px;
     background-color: $white;
     color: $black;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    perspective: 500;
+    perspective: 500px;
     transform-style: preserve-3d;
-    &:hover {
+    &.langs-show {
       #langs {
         display: flex;
         opacity: 1;
@@ -78,7 +94,7 @@ header {
       flex-direction: column;
       align-items: flex-start;
       position: absolute;
-      top: 0px;
+      top: 35px;
       right: 0px;
       opacity: 0;
       background: $white;
@@ -106,7 +122,6 @@ header {
           color: $middle-grey;
         }
         &.act-lang {
-          // color: $middle-grey;
           &::after {
             content: '';
             width: 0;
