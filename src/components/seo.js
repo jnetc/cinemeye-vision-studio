@@ -16,7 +16,6 @@ function SEO({ description, meta, lang, title, theme, modal }) {
   //     }
   //   `
   // );
-
   return (
     <Helmet>
       <html lang={lang} amp />
@@ -47,7 +46,7 @@ function SEO({ description, meta, lang, title, theme, modal }) {
       <meta name="robots" content="index, follow" />
       <meta name="revisit-after" content="7 days" />
       <link
-        rel="stylesheet preload prefetch"
+        rel="stylesheet preload prefetch preconnect"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
         as="style"
         type="text/css"></link>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 // Styles
-import '../sass/components/header.scss';
+import '../../sass/components/header.scss';
 // Components
-import Logo from './Header/Logo';
-import NavLink from './Header/NavLink';
-import Languages from './Header/Languages';
+import Logo from './Logo';
+import NavLink from './NavLink';
+import Languages from './Languages';
 
 // Header Component
 const Header = () => {

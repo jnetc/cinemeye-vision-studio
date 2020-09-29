@@ -1,15 +1,17 @@
-import React from 'react';
-
-// import Image from '../components/image';
+import React, { lazy, Suspense } from 'react';
 // SEO Component
 import SEO from '../components/seo';
-// Components
-import Modal from '../components/Modal';
-import Header from '../components/Header';
-import Intro from '../components/Intro';
-import Values from '../components/Values';
+import { useStore } from '../components/store/Store';
 
-import { useStore } from '../components/Store';
+// Components
+import Header from '../components/header';
+import Intro from '../components/intro';
+// import Values from '../components/values';
+// import Modal from '../components/modal';
+// const Intro = lazy(() => import('../components/intro'));
+// const Header = lazy(() => import('../components/header'));
+const Values = lazy(() => import('../components/values'));
+const Modal = lazy(() => import('../components/modal'));
 
 const IndexPage = () => {
   const ctx = useStore();
@@ -22,20 +24,25 @@ const IndexPage = () => {
       image: 'https://cinemeye.com/images/og.png',
     },
   };
+  const isSSR = typeof window === 'undefined';
   return (
     <>
       <SEO
         lang={ctx?.lang}
         theme={ctx?.theme}
-        modal={ctx?.modal}
+        modal={ctx?.modal.active}
         title={helmet.title}
         description={helmet.description}
         meta={helmet.meta}
       />
-      <Modal />
       <Header />
       <Intro />
-      <Values />
+      {!isSSR && (
+        <Suspense fallback={<div>Loading</div>}>
+          <Modal />
+          <Values />
+        </Suspense>
+      )}
     </>
   );
 };

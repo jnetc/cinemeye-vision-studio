@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 // Styles
-import '../sass/components/intro.scss';
+import '../../sass/components/intro.scss';
 // Components
-import bg from '../images/regular/intro-regular.jpg';
-import PlayButtonIcon from './icons/Play';
+// import bg from '../images/regular/intro-regular.jpg';
+import PlayButtonIcon from '../icons/Play';
+import Image from './Image';
 
 // Context
-import { useStore } from '../components/Store';
+import { useStore } from '../store/Store';
 
 const Intro = () => {
   const [exist, setExist] = useState(false);
@@ -23,9 +24,7 @@ const Intro = () => {
 
   return (
     <section id="intro">
-      <figure>
-        <img src={bg} alt="intro" />
-      </figure>
+      <Image />
       <div className={addClass}>
         <h1>We make</h1>
         <h2>Cinematography & Media Production</h2>
@@ -33,6 +32,7 @@ const Intro = () => {
       <button
         type="button"
         className="play-btn"
+        aria-label="Play"
         onMouseEnter={() => setExist(true)}
         onMouseLeave={() => setExist(false)}
         onClick={() => ctx.modalHandler({ active: true, data: ctx.videoUrl })}>

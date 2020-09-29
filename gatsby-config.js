@@ -5,11 +5,11 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-playground`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -17,6 +17,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+    //   options: {
+    //     devMode: true,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -69,6 +75,6 @@ module.exports = {
     ///// Important: For the web app manifest to be cached,
     ///// we’ll need to list gatsby-plugin-manifest
     ///// BEFORE gatsby-plugin-offline.
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 };

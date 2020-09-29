@@ -69,3 +69,15 @@ p {
     line-height: 27px;
   }
 }
+// См. intro и values стили!!!
+#intro,
+#values {
+  .gatsby-image-wrapper {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 // Параметры состояния по умолчанию
-const youtubeFilter = `autoplay=1&iv_load_policy=3&showinfo=0&rel=0`;
+const youtubeFilter = `autoplay=1&rel=0&controls=2&showinfo=0`;
 
 const state = {
   language: 'fi',

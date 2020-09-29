@@ -2,15 +2,11 @@
 
 #values {
   width: 100%;
-  figure {
-    width: inherit;
-    position: relative;
-    img {
-      height: 100vw;
-      width: inherit;
-      object-fit: cover;
-      height: inherit;
-    }
+  height: 100%;
+  position: relative;
+
+  // См. глобольный стиль!!!
+  .gatsby-image-wrapper {
     &::after {
       content: '';
       width: 100%;

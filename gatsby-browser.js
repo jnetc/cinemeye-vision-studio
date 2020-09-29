@@ -7,6 +7,6 @@ import './src/sass/global.scss';
 // Page/index.js может принимать props
 // См. ссылку на инструкции по Gatsby
 // https://www.gatsbyjs.com/blog/2019-01-31-using-react-context-api-with-gatsby/
-import { Store } from './src/components/Store';
+import { Store } from './src/components/store/Store';
 
 export const wrapRootElement = ({ element }) => <Store>{element}</Store>;

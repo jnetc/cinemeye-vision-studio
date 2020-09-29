@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 // Global Storage
-import { useStore } from '../Store';
+import { useStore } from '../store/Store';
 
 const Languages = () => {
   // Toggle to open lang menu
