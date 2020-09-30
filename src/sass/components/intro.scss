@@ -58,9 +58,6 @@
     grid-row: 2 / -2;
     transition: all 0.5s cubic-bezier(0, 1.3, 0.7, 1);
     transform: rotate3d(0, 1, 0, 0deg);
-    &.anim-ttl {
-      transform: rotate3d(0, 1, 0, 30deg);
-    }
     @media screen and (max-width: $tablets) {
       padding-left: 0;
       margin: auto;
@@ -141,6 +138,9 @@
         opacity: 0;
         box-shadow: 0 0 0px 75px rgba($black, 0);
       }
+      ~ .intro-title {
+        transform: rotate3d(0, 1, 0, 30deg);
+      }
     }
     svg {
       position: relative;
@@ -148,6 +148,7 @@
       fill: $light-grey;
       transition: all 0.3s ease-in-out;
     }
+
     @media screen and (max-width: $tablets) {
       grid-column: 1;
       grid-row: 2;
@@ -166,6 +167,7 @@
       grid-row: 2;
     }
   }
+
   #scroll-icon {
     width: 28px;
     height: 46px;

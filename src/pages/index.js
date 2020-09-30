@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 // SEO Component
 import SEO from '../components/seo';
 import { useStore } from '../components/store/Store';
@@ -6,12 +6,13 @@ import { useStore } from '../components/store/Store';
 // Components
 import Header from '../components/header';
 import Intro from '../components/intro';
-// import Values from '../components/values';
-// import Modal from '../components/modal';
+import Values from '../components/values';
+import Modal from '../components/modal';
+
 // const Intro = lazy(() => import('../components/intro'));
 // const Header = lazy(() => import('../components/header'));
-const Values = lazy(() => import('../components/values'));
-const Modal = lazy(() => import('../components/modal'));
+// const Values = lazy(() => import('../components/values'));
+// const Modal = lazy(() => import('../components/modal'));
 
 const IndexPage = () => {
   const ctx = useStore();
@@ -24,7 +25,10 @@ const IndexPage = () => {
       image: 'https://cinemeye.com/images/og.png',
     },
   };
+  // https://www.gatsbyjs.com/docs/using-client-side-only-packages/#workaround-4-use-reactlazy-and-suspense-on-client-side-only
   const isSSR = typeof window === 'undefined';
+
+  console.log('refresh index page', ctx?.lang);
   return (
     <>
       <SEO
@@ -35,11 +39,15 @@ const IndexPage = () => {
         description={helmet.description}
         meta={helmet.meta}
       />
+      {!isSSR && (
+        <Suspense fallback={<div>Loading</div>}>
+          <Modal />
+        </Suspense>
+      )}
       <Header />
       <Intro />
       {!isSSR && (
         <Suspense fallback={<div>Loading</div>}>
-          <Modal />
           <Values />
         </Suspense>
       )}

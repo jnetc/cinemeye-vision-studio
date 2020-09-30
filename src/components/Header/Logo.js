@@ -4,9 +4,9 @@ import { Link } from 'gatsby';
 // Components
 import logo from '../../images/svg/logo.svg';
 
-const Logo = ({ linkHandler }) => {
+const Logo = () => {
   return (
-    <Link id="logo" to="/" onClick={() => linkHandler('')}>
+    <Link id="logo" to="/">
       <img src={logo} alt="logo" />
     </Link>
   );

@@ -46,11 +46,9 @@
     &:hover {
       &::after {
         background-color: $white;
-        transform: rotate(-45deg);
       }
       &::before {
         background-color: $white;
-        transform: rotate(45deg);
       }
     }
     @media screen and (max-width: $phones),

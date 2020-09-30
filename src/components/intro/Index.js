@@ -1,46 +1,59 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { graphql, StaticQuery } from 'gatsby';
 // Styles
 import '../../sass/components/intro.scss';
 // Components
-// import bg from '../images/regular/intro-regular.jpg';
-import PlayButtonIcon from '../icons/Play';
-import Image from './Image';
 
-// Context
-import { useStore } from '../store/Store';
+import Image from './Image';
+import PlayButton from './PlayButton';
+import Title from './Title';
+
+const ctx = graphql`
+  query {
+    allDatoCmsIntro {
+      nodes {
+        locale
+        title
+        subtitle
+        navigation {
+          link
+        }
+      }
+    }
+  }
+`;
 
 const Intro = () => {
-  const [exist, setExist] = useState(false);
-  const [addClass, setAddClass] = useState('intro-title');
-  const ctx = useStore();
+  const data = StaticQuery(ctx);
 
-  useEffect(() => {
-    if (exist) {
-      setAddClass('intro-title anim-ttl');
-    } else {
-      setAddClass('intro-title');
-    }
-  }, [exist]);
-
+  console.log('refresh intro', data);
   return (
     <section id="intro">
       <Image />
-      <div className={addClass}>
-        <h1>We make</h1>
-        <h2>Cinematography & Media Production</h2>
-      </div>
-      <button
-        type="button"
-        className="play-btn"
-        aria-label="Play"
-        onMouseEnter={() => setExist(true)}
-        onMouseLeave={() => setExist(false)}
-        onClick={() => ctx.modalHandler({ active: true, data: ctx.videoUrl })}>
-        <PlayButtonIcon />
-      </button>
+      <PlayButton />
+      <Title />
       <div id="scroll-icon" />
     </section>
   );
 };
+
+// const background = graphql`
+//   query {
+//     datoCmsIntro {
+//       background {
+//         fluid {
+//           srcSet
+//           src
+//           sizes
+//           base64
+//           aspectRatio
+//         }
+//       }
+//       logo {
+//         url
+//       }
+//     }
+//   }
+// `;
 
 export default Intro;

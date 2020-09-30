@@ -3,11 +3,17 @@ import React from 'react';
 
 const NavLink = ({ data, location, linkHandler, children }) => {
   const link = data.toLowerCase().split(' ').join('');
+
+  const isActive = ({ location }) => {
+    if (location.hash === '') location.hash = '#intro';
+
+    return location.hash === `#${link}`
+      ? { className: 'nav-link act-link' }
+      : { className: 'nav-link' };
+  };
+
   return (
-    <Link
-      onClick={() => linkHandler(`#${link}`)}
-      className={location === `#${link}` ? 'nav-link act-link' : 'nav-link'}
-      to={`/#${link}`}>
+    <Link getProps={isActive} to={`/#${link}`}>
       {children}
     </Link>
   );

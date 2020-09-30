@@ -34,7 +34,7 @@ const Image = () => {
       }
     }
   `);
-  console.log(data);
+  // console.log(data);
   if (!data?.file?.childImageSharp?.fluid) {
     return <div>Picture not found</div>;
   }

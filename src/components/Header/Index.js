@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // Styles
 import '../../sass/components/header.scss';
 // Components
@@ -8,25 +8,12 @@ import Languages from './Languages';
 
 // Header Component
 const Header = () => {
-  // All Links
-  const [location, setLocation] = useState('');
-  useEffect(() => {
-    setLocation(window.location.hash); // Get location name
-  }, [location]);
-
   const names = ['Intro', 'Values', 'Plans', `Meet us`];
 
-  const linkHandler = value => {
-    setLocation(value);
-  };
-
   const links = names.map(link => {
-    if (location === '') setLocation('#intro');
     return (
       <li key={link}>
-        <NavLink data={link} location={location} linkHandler={linkHandler}>
-          {link}
-        </NavLink>
+        <NavLink data={link}>{link}</NavLink>
       </li>
     );
   });
@@ -34,7 +21,7 @@ const Header = () => {
   return (
     <header>
       <nav className="navigation">
-        <Logo linkHandler={linkHandler} />
+        <Logo />
         <ul>{links}</ul>
         <Languages />
       </nav>
