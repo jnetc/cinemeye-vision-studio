@@ -9,6 +9,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-playground`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
@@ -29,7 +30,7 @@ module.exports = {
         apiToken: process.env.GATSBY_DATOCMS_API,
         // If you are working on development/staging environment, you might want to
         // preview the latest version of records instead of the published one:
-        previewMode: false,
+        // previewMode: false,
       },
     },
     {
@@ -84,6 +85,6 @@ module.exports = {
     ///// Important: For the web app manifest to be cached,
     ///// we’ll need to list gatsby-plugin-manifest
     ///// BEFORE gatsby-plugin-offline.
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
   ],
 };

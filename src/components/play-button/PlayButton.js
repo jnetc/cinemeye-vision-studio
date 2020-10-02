@@ -4,15 +4,21 @@ import PlayButtonIcon from '../icons/Play';
 // Context
 import { useStore } from '../store/Store';
 
-const PlayButton = () => {
-  const ctx = useStore();
-
+const PlayButton = ({ link }) => {
+  const data = useStore();
+  const youtubeFilter = `?autoplay=1&rel=0&controls=2&showinfo=0`;
+  let url = link + youtubeFilter;
   return (
     <button
       type="button"
       className="play-btn"
       aria-label="Play"
-      onClick={() => ctx.modalHandler({ active: true, data: ctx.videoUrl })}>
+      onClick={() =>
+        data.modalHandler({
+          active: true,
+          data: url,
+        })
+      }>
       <PlayButtonIcon />
     </button>
   );

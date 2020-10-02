@@ -6,14 +6,28 @@ import Logo from './Logo';
 import NavLink from './NavLink';
 import Languages from './Languages';
 
+// import { useDatoCMS } from '../store/DatoCMS';
+import { useStore } from '../store/Store';
+
 // Header Component
 const Header = () => {
-  const names = ['Intro', 'Values', 'Plans', `Meet us`];
+  const data = useStore();
 
-  const links = names.map(link => {
+  const defaultNavNames = [
+    { link: 'Intro' },
+    { link: 'Values' },
+    { link: 'Plans' },
+    { link: `Meet us` },
+  ];
+  let navNames = data?.ctx?.allDatoCmsNav?.navigation;
+  if (!navNames) {
+    navNames = defaultNavNames;
+  }
+
+  const links = navNames.map(name => {
     return (
-      <li key={link}>
-        <NavLink data={link}>{link}</NavLink>
+      <li key={name.link}>
+        <NavLink link={name.id}>{name.link}</NavLink>
       </li>
     );
   });

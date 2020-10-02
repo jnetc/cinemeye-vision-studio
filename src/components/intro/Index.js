@@ -1,59 +1,51 @@
 import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+
 // Styles
 import '../../sass/components/intro.scss';
 // Components
-
 import Image from './Image';
-import PlayButton from './PlayButton';
+import PlayButton from '../play-button/PlayButton';
 import Title from './Title';
 
-const ctx = graphql`
-  query {
-    allDatoCmsIntro {
-      nodes {
-        locale
-        title
-        subtitle
-        navigation {
-          link
-        }
-      }
-    }
-  }
-`;
+// Context
+import { useStore } from '../store/Store';
 
 const Intro = () => {
-  const data = StaticQuery(ctx);
+  // const xxx = useStaticQuery(graphql`
+  //   query {
+  //     allDatoCmsIntro {
+  //       nodes {
+  //         subtitle
+  //         title
+  //         locale
+  //       }
+  //     }
+  //   }
+  // `);
 
-  console.log('refresh intro', data);
+  // if (!xxx) {
+  //   return null;
+  // }
+
+  // console.log(xxx);
+
+  const data = useStore();
+  const video = data?.ctx?.datoCmsIntro;
+  const context = data?.ctx?.allDatoCmsIntro;
+  if (!video || !context) {
+    return null;
+  }
+
   return (
     <section id="intro">
       <Image />
-      <PlayButton />
-      <Title />
+      <PlayButton link={video.videoUrl} />
+      <Title context={context} />
       <div id="scroll-icon" />
+      {/* <div>{xxx?.allDatoCmsIntro?.nodes[0]?.title}</div> */}
     </section>
   );
 };
-
-// const background = graphql`
-//   query {
-//     datoCmsIntro {
-//       background {
-//         fluid {
-//           srcSet
-//           src
-//           sizes
-//           base64
-//           aspectRatio
-//         }
-//       }
-//       logo {
-//         url
-//       }
-//     }
-//   }
-// `;
 
 export default Intro;

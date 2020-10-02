@@ -45,7 +45,7 @@ const Languages = () => {
       tabIndex={0}
       onKeyPress={() => toggle()}
       onClick={() => toggle()}>
-      {ctx?.lang.toUpperCase()}
+      {ctx?.lang}
       <div id="langs">{languages}</div>
     </div>
   );

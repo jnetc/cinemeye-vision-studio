@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Title = () => (
-  <div className="intro-title">
-    <h1>We make</h1>
-    <h2>Cinematography & Media Production</h2>
-  </div>
-);
+const Title = ({ context }) => {
+  return (
+    <div className="intro-title">
+      <h1>{context.title}</h1>
+      <h2>{context.subtitle}</h2>
+    </div>
+  );
+};
 
 export default Title;

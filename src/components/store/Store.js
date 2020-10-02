@@ -1,28 +1,29 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { localeHandler } from './remapQueries';
 
 // Параметры состояния по умолчанию
-const youtubeFilter = `autoplay=1&rel=0&controls=2&showinfo=0`;
-
 const state = {
   language: 'fi',
   theme: 'dark',
   modal: { active: false },
-  fetchData: lang => ({ data: lang }),
-  videoUrl: `https://www.youtube.com/embed/VV9xSx4danU?${youtubeFilter}`,
 };
 
-export const Context = React.createContext();
-
-// Языковый хук
+// CONTEXT
+export const Context = React.createContext(state);
+// Хук глобального  хранилища
 export const useStore = () => {
   return useContext(Context);
 };
 
-// Создаем глобальные состояния для Index
 export const Store = ({ children }) => {
+  // Получаем данные с CMS
+  const data = useStaticQuery(ctx);
+  // Создаем глобальные состояния для Index
   const [lang, setLang] = useState('');
   const [modal, setModal] = useState(state.modal);
   const [theme] = useState(state.theme);
+  // const [context] = useState(data);
 
   // Определение языка
   useEffect(() => {
@@ -43,7 +44,7 @@ export const Store = ({ children }) => {
     },
     [lang]
   );
-
+  console.log(data);
   return (
     <Context.Provider
       value={{
@@ -53,8 +54,43 @@ export const Store = ({ children }) => {
         modal,
         modalHandler: obj => setModal(obj),
         videoUrl: state.videoUrl,
+        ctx: localeHandler(data, lang),
       }}>
       {children}
     </Context.Provider>
   );
 };
+
+// GrapQL запрос
+const ctx = graphql`
+  query {
+    allDatoCmsIntro {
+      nodes {
+        subtitle
+        title
+        locale
+      }
+    }
+    datoCmsIntro {
+      videoUrl
+    }
+    allDatoCmsNav {
+      nodes {
+        locale
+        navigation {
+          link
+        }
+      }
+    }
+    allDatoCmsValue {
+      nodes {
+        locale
+        title
+        context
+      }
+    }
+    datoCmsValue {
+      videoUrl
+    }
+  }
+`;

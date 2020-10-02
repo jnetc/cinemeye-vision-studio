@@ -4,10 +4,10 @@ import SEO from '../components/seo';
 import { useStore } from '../components/store/Store';
 
 // Components
-import Header from '../components/header';
-import Intro from '../components/intro';
-import Values from '../components/values';
-import Modal from '../components/modal';
+import Header from '../components/header/Index';
+import Intro from '../components/intro/Index';
+import Values from '../components/values//Index';
+import Modal from '../components/modal/Index';
 
 // const Intro = lazy(() => import('../components/intro'));
 // const Header = lazy(() => import('../components/header'));
@@ -28,7 +28,7 @@ const IndexPage = () => {
   // https://www.gatsbyjs.com/docs/using-client-side-only-packages/#workaround-4-use-reactlazy-and-suspense-on-client-side-only
   const isSSR = typeof window === 'undefined';
 
-  console.log('refresh index page', ctx?.lang);
+  // console.log('refresh index page', ctx?.lang);
   return (
     <>
       <SEO
