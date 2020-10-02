@@ -44,7 +44,7 @@ export const Store = ({ children }) => {
     },
     [lang]
   );
-  console.log(data);
+  // console.log(data);
   return (
     <Context.Provider
       value={{

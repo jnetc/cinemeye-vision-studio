@@ -6,7 +6,6 @@ import Logo from './Logo';
 import NavLink from './NavLink';
 import Languages from './Languages';
 
-// import { useDatoCMS } from '../store/DatoCMS';
 import { useStore } from '../store/Store';
 
 // Header Component
