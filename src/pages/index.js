@@ -4,7 +4,7 @@ import SEO from '../components/seo';
 import { useStore } from '../components/store/Store';
 
 // Components
-// import Header from '../components/header/Header';
+import Header from '../components/navigation/Header';
 import Intro from '../components/intro/Intro';
 import Values from '../components/values/Values';
 import Modal from '../components/modal/Modal';
@@ -44,7 +44,7 @@ const IndexPage = () => {
           <Modal />
         </Suspense>
       )}
-      {/* <Header /> */}
+      <Header />
       <Intro />
       {!isSSR && (
         <Suspense fallback={<div>Loading</div>}>
