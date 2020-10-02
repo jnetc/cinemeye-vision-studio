@@ -10,12 +10,12 @@ import './src/sass/global.scss';
 import { Store } from './src/components/store/Store';
 export const wrapRootElement = ({ element }) => <Store>{element}</Store>;
 
-export const onServiceWorkerUpdateFound = ({ serviceWorker }) => {
-  if (
-    window.confirm(
-      'This site has been updated with new data. Do you wish to reload the site to get the new data?'
-    )
-  ) {
-    console.log(serviceWorker, 'Need update');
-  }
-};
+// export const onServiceWorkerUpdateFound = ({ serviceWorker }) => {
+//   if (
+//     window.confirm(
+//       'This site has been updated with new data. Do you wish to reload the site to get the new data?'
+//     )
+//   ) {
+//     console.log(serviceWorker, 'Need update');
+//   }
+// };
