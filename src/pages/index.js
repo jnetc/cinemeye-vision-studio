@@ -4,10 +4,10 @@ import SEO from '../components/seo';
 import { useStore } from '../components/store/Store';
 
 // Components
-import Header from '../components/header/Index';
-import Intro from '../components/intro/Index';
-import Values from '../components/values//Index';
-import Modal from '../components/modal/Index';
+import Header from '../components/header/Header';
+import Intro from '../components/intro/Intro';
+import Values from '../components/values/Values';
+import Modal from '../components/modal/Modal';
 
 // const Intro = lazy(() => import('../components/intro'));
 // const Header = lazy(() => import('../components/header'));
