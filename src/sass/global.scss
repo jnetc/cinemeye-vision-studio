@@ -49,6 +49,7 @@ h1 {
   font-weight: bold;
   font-size: 4rem;
   color: $white;
+  line-height: 1;
   @media screen and (max-width: $tablets) {
     font-size: 3.2rem;
   }

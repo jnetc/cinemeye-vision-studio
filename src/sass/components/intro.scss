@@ -9,10 +9,11 @@
   grid-template-rows: 1fr repeat(2, 150px) 1fr;
   gap: 0px;
   align-items: center;
+  padding: 24px;
   overflow: hidden;
   position: relative;
   perspective: 1000px;
-  transform-style: preserve-3d;
+  // transform-style: preserve-3d;
 
   // См. глобольный стиль!!!
   .gatsby-image-wrapper {
@@ -53,7 +54,6 @@
 
   // Context
   div.intro-title {
-    padding-left: 24px;
     grid-column: 2;
     grid-row: 2 / -2;
     transition: all 0.5s cubic-bezier(0, 1.3, 0.7, 1);
@@ -74,15 +74,14 @@
     }
   }
   h2 {
-    padding: 0 0 15px 0;
+    padding: 15px 0;
     color: $middle-grey;
     font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: 0.15em;
-    line-height: 1.3;
+    line-height: 1.5;
     @media screen and (max-width: $tablets) {
       font-size: 1rem;
-      padding: 5px 0 15px;
     }
   }
 
@@ -175,8 +174,8 @@
     grid-row: 4;
     position: relative;
     align-self: flex-end;
-    margin: 0 auto 70px;
-    border: 3px solid $dark-grey;
+    margin: 0 auto 40px;
+    border: 3px solid $middle-grey;
     border-radius: 50px;
     z-index: 5;
     &::before {
@@ -186,7 +185,7 @@
       position: absolute;
       top: 7px;
       left: 9px;
-      background: $dark-grey;
+      background: $middle-grey;
       border-radius: 50px;
       animation: scroll-anim 3s ease-in-out infinite;
     }

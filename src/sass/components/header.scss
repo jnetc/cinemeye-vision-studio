@@ -14,7 +14,7 @@ header {
 
 .navigation {
   width: 100%;
-  height: 100px;
+  height: 80px;
   display: grid;
   grid-template-columns: 130px 1fr 60px;
   align-items: center;
@@ -47,7 +47,7 @@ header {
     li {
       a.nav-link {
         margin: 0 5px;
-        padding: 15px 15px;
+        padding: 12px;
         color: $white;
         letter-spacing: 0.12em;
         text-transform: uppercase;
