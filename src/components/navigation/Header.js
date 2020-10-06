@@ -1,16 +1,23 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 // Styles
 import '../../sass/components/header.scss';
 // Components
 import Logo from './Logo';
 import NavLink from './NavLink';
 import Languages from './Languages';
-
+// Context
 import { useStore } from '../store/Store';
+import { localeHandler } from '../store/remapQueries';
 
 // Header Component
 const Header = () => {
-  const data = useStore();
+  // Получаем данные с CMS
+  const query = useStaticQuery(ctx);
+  // Получаем глобальные переменные
+  const { lang } = useStore();
+  // Трансформация данных
+  const data = localeHandler(query, lang);
 
   const defaultNavNames = [
     { link: 'Intro' },
@@ -18,12 +25,12 @@ const Header = () => {
     { link: 'Plans' },
     { link: `Meet us` },
   ];
-  let navNames = data?.ctx?.allDatoCmsNav?.navigation;
-  if (!navNames) {
-    navNames = defaultNavNames;
+  let context = data?.allDatoCmsNav;
+  if (!context) {
+    context = defaultNavNames;
   }
 
-  const links = navNames.map(name => {
+  const links = context.map(name => {
     return (
       <li key={name.link}>
         <NavLink link={name.id}>{name.link}</NavLink>
@@ -43,6 +50,20 @@ const Header = () => {
 };
 
 export default Header;
+
+// GrapQL запрос
+const ctx = graphql`
+  query {
+    allDatoCmsNav {
+      nodes {
+        navigation {
+          locale
+          link
+        }
+      }
+    }
+  }
+`;
 
 ///////###############
 /// До делать потом

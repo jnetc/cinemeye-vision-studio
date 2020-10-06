@@ -7,6 +7,7 @@ import { useStore } from '../components/store/Store';
 import Header from '../components/navigation/Header';
 import Intro from '../components/intro/Intro';
 import Values from '../components/values/Values';
+import Plans from '../components/plans/Plans';
 import Modal from '../components/modal/Modal';
 
 // const Intro = lazy(() => import('../components/intro'));
@@ -49,6 +50,7 @@ const IndexPage = () => {
       {!isSSR && (
         <Suspense fallback={<div>Loading</div>}>
           <Values />
+          <Plans />
         </Suspense>
       )}
     </>

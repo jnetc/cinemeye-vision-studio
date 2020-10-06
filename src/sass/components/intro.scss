@@ -13,8 +13,6 @@
   overflow: hidden;
   position: relative;
   perspective: 1000px;
-  // transform-style: preserve-3d;
-
   // См. глобольный стиль!!!
   .gatsby-image-wrapper {
     &::after {
@@ -69,12 +67,12 @@
       }
     }
     @media only screen and (orientation: landscape) and (max-device-width: $tablets) {
-      grid-column: 1;
+      grid-column: 1 /3;
       grid-row: 2;
     }
   }
   h2 {
-    padding: 15px 0;
+    padding: 15px 0 0;
     color: $middle-grey;
     font-size: 1.1rem;
     font-weight: 400;
@@ -85,84 +83,25 @@
     }
   }
 
+  // См. глобольный стиль!!!
   button.play-btn {
-    width: 125px;
-    height: 125px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     grid-column: 3;
     grid-row: 2 / -2;
-    justify-self: center;
-    position: relative;
-    border: 2px solid $light-grey;
-    border-radius: 50%;
-    background-color: transparentize(black, 0.75);
-    transition: all 0.3s ease-in-out;
-    transform: translate3d(0, 0, 0px);
-    cursor: pointer;
-    &::before {
-      content: '';
-      width: inherit;
-      height: inherit;
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      border-radius: inherit;
-      box-shadow: inset 0 0 15px 3px rgba($white, 0.7),
-        0 0 15px 3px rgba($white, 0.7);
-    }
-    &::after {
-      content: '';
-      width: 5px;
-      height: 5px;
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0.7;
-      border-radius: inherit;
-      box-shadow: 0 0 15px rgba($black, 1);
-      transition: all 0.5s ease-in-out;
-      z-index: -1;
-    }
     &:hover {
-      background-color: $light-grey;
-      transform: translate3d(0, 0, 150px);
-      svg {
-        fill: $black;
-      }
-      &::after {
-        transition-delay: 50ms;
-        opacity: 0;
-        box-shadow: 0 0 0px 75px rgba($black, 0);
-      }
       ~ .intro-title {
         transform: rotate3d(0, 1, 0, 30deg);
       }
     }
-    svg {
-      position: relative;
-      left: 5px;
-      fill: $light-grey;
-      transition: all 0.3s ease-in-out;
-    }
-
     @media screen and (max-width: $tablets) {
       grid-column: 1;
       grid-row: 2;
-      svg {
-        transform: scale(0.8);
-      }
     }
     @media screen and (max-width: $phones) {
       width: 100px;
       height: 100px;
     }
     @media only screen and (orientation: landscape) and (max-device-width: $tablets) {
-      width: 100px;
-      height: 100px;
-      grid-column: 2;
+      grid-column: 3/4;
       grid-row: 2;
     }
   }
@@ -191,6 +130,35 @@
     }
     @media screen and (max-width: $tablets) {
       grid-column: 1;
+      display: none;
+    }
+    @media only screen and (orientation: landscape) and (max-device-width: $tablets) {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      margin: 0 auto 25px;
+    }
+  }
+  #scroll-mob-icon {
+    width: 60px;
+    height: 60px;
+    display: none;
+    border: 2px solid $dark-grey;
+    padding: 8px;
+    border-radius: 50%;
+    #fingerprint {
+      fill: none;
+      stroke: transparentize($middle-grey, 0.3);
+      stroke-linecap: round;
+      stroke-miterlimit: 10;
+      stroke-width: 1px;
+    }
+    @media screen and (max-width: $tablets) {
+      display: block;
+      grid-column: 1;
+      grid-row: 4;
+      align-self: flex-end;
+      margin: 0 auto 50px;
+      animation: finger-anim 5s ease-in-out infinite;
     }
     @media only screen and (orientation: landscape) and (max-device-width: $tablets) {
       grid-column: 1 / -1;
@@ -219,6 +187,33 @@
   }
   100% {
     transform: translate3d(0, 15px, 0);
+    opacity: 0;
+  }
+}
+@keyframes finger-anim {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  10% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  50% {
+    border: 2px solid $dark-grey;
+  }
+  55% {
+    border-color: $middle-grey;
+  }
+  60% {
+    border: 2px solid $dark-grey;
+  }
+  80% {
+    transform: translate3d(0, 0px, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -35px, 0);
     opacity: 0;
   }
 }

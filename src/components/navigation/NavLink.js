@@ -2,7 +2,13 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 const NavLink = ({ link, children }) => {
-  // const link = data.toLowerCase().split(' ').join('');
+  // После обновление страницы
+  // Определяем хеш ссылки и автоскролит к нему
+  // ?????
+  // useEffect(() => {
+  // const positionHash = window.location.hash;
+  // window.location.assign(positionHash);
+  // }, []);
 
   const isActive = ({ location }) => {
     if (location.hash === '') location.hash = '#intro';

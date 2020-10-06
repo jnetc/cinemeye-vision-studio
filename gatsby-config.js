@@ -43,12 +43,12 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Cinemeye Vision Studio`,
-        short_name: `C.V. Studio`,
+        short_name: `Cinemeye Vision`,
         description: `Cinematography & Media Production`,
         start_url: `/`,
         background_color: `#1f1f1f`,
         theme_color: `#1f1f1f`,
-        display: `minimal-ui`,
+        display: `fullscreen`,
         icon: `src/images/favicon.png`,
         icons: [
           {
