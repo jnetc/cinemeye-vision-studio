@@ -1,19 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Feautures from './Features';
 
-const Plan = ({ children }) => {
+const Plan = ({ context }) => {
+  const {
+    name,
+    desc,
+    from,
+    price,
+    button,
+    buttonMob,
+    service1,
+    service2,
+    service3,
+    service4,
+    service5,
+    service6,
+    popular,
+    customService,
+  } = context;
+
+  const feauters = {
+    service1,
+    service2,
+    service3,
+    service4,
+    service5,
+    service6,
+    customService,
+  };
+
+  const [show, setShow] = useState(false);
+  const toggle = () => setShow(!show);
+
   return (
-    <div className="plan">
-      <span id="plan_pop">most popular</span>
-      <span className="plan_name">Light</span>
-      <h5>For personal projects</h5>
-      <span className="plan_price">1550€</span>
+    <div
+      className={`${popular ? 'plan popular' : 'plan'}`}
+      role="button"
+      tabIndex={0}>
+      {popular ? <div id="plan_pop">most popular</div> : null}
+      <div className="plan_name">{name}</div>
+      <h5>{desc}</h5>
+
+      <div className="plan_price">
+        {price}€{from && <div className="plan_from">{from}</div>}
+      </div>
       <button type="button" className="plan_btn">
-        Select
+        {button}
       </button>
-      <button type="button" className="plan_mob-btn">
-        SHOW FEATURES
+      <button type="button" className="plan_btn-mob" onClick={() => toggle()}>
+        <div className={show ? 'plan_btn-show active' : 'plan_btn-show'} />
+        {buttonMob}
       </button>
-      <section>{children}</section>
+      <Feautures data={feauters} toggle={show} />
     </div>
   );
 };

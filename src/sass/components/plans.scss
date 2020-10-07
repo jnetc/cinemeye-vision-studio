@@ -3,25 +3,324 @@
 
 #plans {
   width: 100%;
-  height: 100vh;
   display: grid;
   grid-template-columns:
-    1fr minmax(300px, 400px) minmax(300px, 400px) minmax(300px, 400px)
-    150px minmax(300px, 400px) 1fr;
+    1fr
+    minmax(300px, 350px)
+    minmax(300px, 350px)
+    minmax(300px, 350px)
+    minmax(300px, 350px)
+    1fr;
   grid-template-rows: 1fr;
   gap: 24px;
-  align-items: center;
+  align-items: stretch;
   padding: 250px 24px;
   overflow: hidden;
   position: relative;
   background-color: $bg-dark;
   perspective: 1000px;
+  @media screen and (max-width: $laptops) {
+    grid-template-columns:
+      1fr
+      minmax(300px, 350px)
+      minmax(300px, 350px)
+      1fr;
+    gap: 50px 24px;
+  }
   @media screen and (max-width: $tablets) {
+    align-items: stretch;
+    grid-template-columns:
+      1fr
+      minmax(300px, 420px)
+      1fr;
+    gap: 50px 0px;
+  }
+  @media screen and (max-width: $phones) {
+    align-items: stretch;
     grid-template-columns: 1fr;
-    padding: 0 15px;
+    gap: 50px 0px;
   }
   @media screen and (orientation: landscape) and (max-device-width: $tablets) {
-    grid-template-columns: 1fr 110px 1fr;
-    grid-template-rows: 70px 1fr 70px;
+    align-items: stretch;
+    grid-template-columns: 1fr minmax(300px, 350px) 1fr;
+    gap: 50px 0px;
+  }
+
+  /// PLAN
+  .plan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 80px 25px 50px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-color: $black;
+    overflow: hidden;
+    perspective: 1000px;
+    transition: all 0.3s ease-in-out;
+    &:nth-of-type(1) {
+      grid-column: 2 / 3;
+      @media screen and (max-width: $laptops) {
+        grid-column: 2 / 3;
+      }
+      @media screen and (max-width: $tablets) {
+        grid-column: 2;
+      }
+    }
+    &:nth-of-type(2) {
+      grid-column: 3 / 4;
+      @media screen and (max-width: $laptops) {
+        grid-column: 3 / 4;
+      }
+      @media screen and (max-width: $tablets) {
+        grid-column: 2;
+      }
+    }
+    &:nth-of-type(3) {
+      grid-column: 4 / 5;
+      @media screen and (max-width: $laptops) {
+        grid-column: 2 / 3;
+      }
+      @media screen and (max-width: $tablets) {
+        grid-column: 2;
+      }
+    }
+    &:nth-of-type(4) {
+      grid-column: 5 / 6;
+      @media screen and (max-width: $laptops) {
+        grid-column: 3 / 4;
+      }
+      @media screen and (max-width: $tablets) {
+        grid-column: 2;
+      }
+    }
+
+    ///// ELEMENTS
+    &.popular {
+      border-color: transparentize($blue, 0.5);
+      box-shadow: 0 8px 8px transparentize($blue, 0.9),
+        0 20px 20px transparentize($blue, 0.95);
+    }
+    &::after {
+      content: '';
+      width: 32rem;
+      height: 30rem;
+      position: absolute;
+      top: -220px;
+      right: -110px;
+      border-radius: 50%;
+      background-color: transparentize($middle-grey, 0.9);
+      transition: all 0.3s ease-in-out;
+      pointer-events: none;
+      @media screen and (max-width: $tablets) {
+        width: 34rem;
+        height: 30rem;
+      }
+    }
+    // INSIDE
+    #plan_pop {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      color: $blue;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transform: translate(-50%, 0);
+    }
+    .plan_name {
+      color: $light-grey;
+      font-size: 30px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3.5px;
+    }
+    h5 {
+      width: 100%;
+      overflow: hidden;
+      margin: 20px 0 40px;
+      color: $middle-grey;
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .plan_price {
+      position: relative;
+      color: $light-grey;
+      font-size: 50px;
+      font-weight: 700;
+      .plan_from {
+        position: absolute;
+        top: -20px;
+        left: -30px;
+        font-size: 21px;
+      }
+    }
+    .plan_btn {
+      min-width: 220px;
+      margin: 50px 0;
+      padding: 13px 0;
+      color: $white;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background-color: $blue;
+      border-radius: 25px;
+      box-shadow: inset 0 2px 5px transparentize($black, 0.5),
+        0 5px 5px transparentize($blue, 0.8),
+        0 15px 15px transparentize($blue, 0.9);
+      transition: background-color 0.3s ease-in-out;
+      cursor: pointer;
+      &:hover {
+        background-color: darken($blue, 10);
+      }
+    }
+    .plan_btn-mob {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+      color: $light-grey;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: transparent;
+      cursor: pointer;
+      .plan_btn-show {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        position: relative;
+        border-radius: 50%;
+        background-color: $dark-grey;
+        box-shadow: 0 8px 8px transparentize($bg-dark, 0);
+        transition: all 0.3s ease-in-out;
+        &::after,
+        &::before {
+          content: '';
+          width: 15px;
+          height: 3px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          border-radius: 5px;
+          background-color: $light-grey;
+          transition: all 0.3s ease-in-out;
+        }
+        &::after {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        &::before {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+        &.active {
+          box-shadow: 0 8px 8px transparentize($bg-dark, 1);
+          &::after {
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          &::before {
+            transform: translate(-50%, -50%) rotate(135deg);
+          }
+        }
+      }
+      @media screen and (max-width: $tablets) {
+        display: flex;
+      }
+      @media screen and (orientation: landscape) and (max-device-width: $tablets) {
+        display: flex;
+      }
+    }
+
+    /// PLANS FEATURES
+    .plan_features {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 15px;
+      color: $light-grey;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+      p,
+      pre {
+        line-height: 130%;
+        letter-spacing: 0.05em;
+      }
+      #plan_features-custom {
+        grid-row: 1 / -1;
+        grid-column: 1 / -1;
+        white-space: pre-wrap;
+        margin-bottom: auto;
+      }
+      .plan_icon-unmark,
+      .plan_icon-mark {
+        width: 1rem;
+        height: 1rem;
+        margin-top: 2px;
+        border-radius: 50%;
+      }
+      .plan_icon-unmark {
+        border: 2px solid $magenta;
+      }
+      .plan_icon-mark {
+        position: relative;
+        border: 2px solid transparent;
+        border-top: 2px solid $blue;
+        border-left: 2px solid $blue;
+        border-bottom: 2px solid $blue;
+        transform: rotate(-30deg);
+        &::after,
+        &::before {
+          content: '';
+          position: absolute;
+          background-color: $blue;
+          border-radius: 5px;
+        }
+        &::after {
+          width: 13px;
+          height: 2px;
+          top: 5px;
+          left: 4px;
+          transform: rotate(-20deg);
+        }
+        &::before {
+          width: 6px;
+          height: 2px;
+          top: 5px;
+          left: 2px;
+          transform: rotate(80deg);
+        }
+      }
+      @media screen and (max-width: $tablets) {
+        max-height: 0px;
+      }
+      @media screen and (orientation: landscape) and (max-device-width: $tablets) {
+        max-height: 0px;
+      }
+      &.show-features {
+        max-height: 370px;
+      }
+    }
+
+    &:hover {
+      border-color: $magenta;
+      box-shadow: 0 8px 8px transparentize($magenta, 0.9),
+        0 20px 20px transparentize($magenta, 0.8);
+      &::after {
+        transform: translate3d(0px, 100px, 100px);
+      }
+      .plan_btn {
+        background-color: $magenta;
+        box-shadow: inset 0 2px 5px transparentize($black, 0.5),
+          0 5px 5px transparentize($magenta, 0.8),
+          0 15px 15px transparentize($magenta, 0.9);
+      }
+    }
   }
 }

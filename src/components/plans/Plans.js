@@ -16,12 +16,11 @@ const Plans = () => {
   // Трансформация данных
   const data = localeHandler(query, lang);
 
-  console.log(data);
-  return (
-    <section id="plans">
-      <Plan />
-    </section>
-  );
+  const plans = data?.allDatoCmsPlan.map(plan => {
+    return <Plan key={plan.name} context={plan} />;
+  });
+
+  return <section id="plans">{plans}</section>;
 };
 
 export default Plans;
@@ -34,6 +33,8 @@ const ctx = graphql`
         plan {
           locale
           name
+          desc
+          from
           price
           button
           buttonMob

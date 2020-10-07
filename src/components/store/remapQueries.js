@@ -36,26 +36,6 @@ const findLanguage = (nodes, lang, nav) => {
   return currentLangArr;
 };
 
-// // HEADER REMAP FUNCTION
-// export const localeHandlerHeader = (context, lang) => {
-//   if (!lang || !context) {
-//     return;
-//   }
-//   // Собираем новые объект
-//   let state = {};
-
-//   for (const key in context) {
-//     if (context.hasOwnProperty(key)) {
-//       const element = context[key];
-//       // Трансформированные Массивы
-//       const arr = findLanguage(element.nodes, lang, navigationLinks);
-//       const node = { [key]: arr };
-//       state = Object.assign(state, node);
-//     }
-//   }
-//   return state;
-// };
-
 // REMAP FUNCTION
 export const localeHandler = (context, lang) => {
   if (!lang || !context) {
@@ -93,25 +73,3 @@ export const localeHandler = (context, lang) => {
   // console.log(obj);
   return obj;
 };
-
-// // PLANS REMAP FUNCTION
-// export const localeHandlerPlans = (context, lang) => {
-//   if (!lang || !context) {
-//     return;
-//   }
-
-//   let obj = {};
-
-//   for (const key in context) {
-//     if (context.hasOwnProperty(key)) {
-//       const element = context[key];
-//       // console.log(element.nodes.length);
-//       // Трансформирование под нужный язык
-//       const arr = findLanguage(element.nodes, lang, undefined);
-//       // Склеиваем объект
-//       const node = { [key]: arr };
-//       obj = { ...node };
-//     }
-//   }
-//   return obj;
-// };
