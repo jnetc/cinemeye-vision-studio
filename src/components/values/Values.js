@@ -31,7 +31,7 @@ const Values = () => {
       </div>
       <article>
         <h2>{context?.title}</h2>
-        <pre className="values">{context?.context}</pre>
+        <pre>{context?.context}</pre>
       </article>
     </section>
   );
