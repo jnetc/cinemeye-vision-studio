@@ -69,21 +69,6 @@
       transition: all 0.3s ease-in-out;
       pointer-events: none;
       z-index: -1;
-      // &::after {
-      //   content: '';
-      //   width: 33rem;
-      //   height: 30rem;
-      //   position: absolute;
-      //   top: -210px;
-      //   left: -30px;
-      //   border-radius: 50%;
-      //   background-color: transparentize($middle-grey, 0.9);
-      //   transition: all 0.3s ease-in-out;
-      //   @media screen and (max-width: $tablets) {
-      //     width: 34rem;
-      //     height: 30rem;
-      //   }
-      // }
       ///// ELEMENTS
       &.popular {
         border-color: transparentize($blue, 0.5);
@@ -340,7 +325,7 @@
       border-color: $magenta;
       box-shadow: 0 8px 8px transparentize($magenta, 0.9),
         0 20px 20px transparentize($magenta, 0.8);
-      transform: translate3d(0, 0, 30px);
+      transform: translate3d(0, 0, 30px) rotate3d(0, 1, 0, 10deg);
     }
   }
 }
@@ -361,6 +346,21 @@
           background: $dark-grey;
           box-shadow: 0 5px 5px transparentize($dark-grey, 0.8),
             0 15px 15px transparentize($dark-grey, 0.9);
+        }
+      }
+      &::after {
+        content: '';
+        width: 33rem;
+        height: 30rem;
+        position: absolute;
+        top: -210px;
+        left: -30px;
+        border-radius: 50%;
+        background-color: transparentize($middle-grey, 0.9);
+        transition: all 0.3s ease-in-out;
+        @media screen and (max-width: $tablets) {
+          width: 34rem;
+          height: 30rem;
         }
       }
     }
