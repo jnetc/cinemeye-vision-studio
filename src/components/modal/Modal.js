@@ -2,7 +2,6 @@ import React from 'react';
 
 import '../../sass/components/modal.scss';
 import { useStore } from '../store/Store';
-
 const Modal = () => {
   const ctx = useStore();
   return (

@@ -20,6 +20,8 @@ body,
 #___gatsby,
 #gatsby-focus-wrapper {
   height: 100%;
+  // scroll-snap-type: y proximity;
+  // scroll-snap-points-y: repeat(300px);
 }
 
 ul {
@@ -68,6 +70,7 @@ pre {
 
 section {
   overflow: hidden;
+  // scroll-snap-align: start;
 }
 // См. intro и values стили!!!
 #intro,

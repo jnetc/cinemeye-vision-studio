@@ -118,7 +118,7 @@
       position: absolute;
       top: 50px;
       left: 50%;
-      color: $blue;
+      // color: $blue;
       font-size: 15px;
       font-weight: 700;
       text-align: center;
@@ -135,7 +135,7 @@
       text-transform: uppercase;
       letter-spacing: 3.5px;
     }
-    h5 {
+    .plan_desc {
       width: 100%;
       overflow: hidden;
       margin: 20px 0 40px;
@@ -162,45 +162,16 @@
       padding: 13px 0;
       position: relative;
       overflow: hidden;
-      color: $white;
+      border: 2px solid transparent;
       font-size: 18px;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 1px;
-      background: $blue;
       border-radius: 25px;
-      box-shadow: 0 5px 5px transparentize($blue, 0.8),
-        0 15px 15px transparentize($blue, 0.9);
       transition: all 0.3s ease-in-out;
       cursor: pointer;
-      &::after {
-        content: '';
-        width: 1px;
-        height: 1px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: $white;
-        border-radius: 50%;
-      }
       &:hover {
-        &::after {
-          animation-delay: 50ms;
-          animation: hover-anim 0.7s ease-in-out forwards;
-        }
-      }
-    }
-    @keyframes hover-anim {
-      from {
-        opacity: 0.4;
-        box-shadow: 0 0 15px rgba($white, 1);
-      }
-      to {
-        opacity: 0;
-        box-shadow: 0 0 0px 180px rgba($white, 0);
+        background: lighten($dark-blue, 5);
       }
     }
     .plan_btn-mob {
@@ -231,50 +202,10 @@
       }
       &.active {
         &::before {
-          // width: 100px;
-          // height: 2px;
           transform: translate(82px, 0);
           background: $magenta;
         }
       }
-      // .plan_btn-show {
-      //   width: 50px;
-      //   height: 2px;
-      //   border-radius: 5px;
-      //   background: $blue;
-      //   transition: all 0.3s ease-in-out;
-      // width: 30px;
-      // height: 30px;
-      // margin: 0 10px;
-      // position: relative;
-      // border-radius: 50%;
-      // transition: all 0.3s ease-in-out;
-      // &::after,
-      // &::before {
-      //   content: '';
-      //   width: 15px;
-      //   height: 3px;
-      //   position: absolute;
-      //   top: 50%;
-      //   left: 50%;
-      //   border-radius: 5px;
-      //   transition: all 0.3s ease-in-out;
-      // }
-      // &::after {
-      //   transform: translate(-50%, -50%) rotate(0deg);
-      // }
-      // &::before {
-      //   transform: translate(-50%, -50%) rotate(90deg);
-      // }
-      // &.active {
-      //   &::after {
-      //     transform: translate(-50%, -50%) rotate(45deg);
-      //   }
-      //   &::before {
-      //     transform: translate(-50%, -50%) rotate(135deg);
-      //   }
-      // }
-      // }
       @media screen and (max-width: $tablets) {
         display: flex;
       }
@@ -321,8 +252,8 @@
         &::before {
           content: '';
           position: absolute;
-          background-color: $blue;
           border-radius: 5px;
+          background-color: $blue;
         }
         &::after {
           width: 13px;
@@ -354,7 +285,7 @@
       border-color: $magenta;
       box-shadow: 0 8px 8px transparentize($magenta, 0.9),
         0 20px 20px transparentize($magenta, 0.8);
-      transform: translate3d(0, 0, 30px) rotate3d(0, 1, 0, 10deg);
+      transform: translate3d(0, 0, 30px);
     }
   }
 }
@@ -367,17 +298,19 @@
       background-color: $black;
       &.select {
         background-color: darken($black, 2);
-        border-color: $bg-dark;
-        box-shadow: inset 0px 10px 20px rgba(black, 0.3),
-          inset 0px 2px 3px rgba(black, 0.5);
+        border-color: transparent;
+        box-shadow: none;
         transform: translate3d(0, 0, 0px);
-        ~ .plan_btn {
-          background: $dark-grey;
-          box-shadow: 0 5px 5px transparentize($dark-grey, 0.8),
-            0 15px 15px transparentize($dark-grey, 0.9);
-        }
         &::after {
           background-color: transparentize($middle-grey, 0.95);
+        }
+        ~ .plan_btn {
+          color: $white;
+          background: lighten($black, 10);
+          box-shadow: none;
+          &:hover {
+            background: lighten($black, 5);
+          }
         }
       }
       &::after {
@@ -397,14 +330,23 @@
       }
     }
   }
+  #plan_pop {
+    color: $light-blue;
+  }
   .plan_name {
     color: $light-grey;
   }
-  h5 {
+  .plan_desc {
     color: $middle-grey;
   }
   .plan_price {
     color: $light-grey;
+  }
+  .plan_btn {
+    color: $white;
+    background: $dark-blue;
+    box-shadow: 0 5px 5px transparentize($dark-blue, 0.8),
+      0 15px 15px transparentize($dark-blue, 0.9);
   }
   .plan_btn-mob {
     color: $light-grey;
@@ -439,21 +381,33 @@
           inset 0px 2px 3px rgba($black, 0.25);
         transform: translate3d(0, 0, 0px);
         ~ .plan_btn {
-          background: $dark-grey;
-          box-shadow: 0 5px 5px transparentize($dark-grey, 0.8),
-            0 15px 15px transparentize($dark-grey, 0.9);
+          color: $black;
+          background: darken($white, 5);
+          box-shadow: none;
+          &:hover {
+            background: darken($white, 10);
+          }
         }
       }
     }
   }
+  #plan_pop {
+    color: $blue;
+  }
   .plan_name {
     color: $dark-grey;
   }
-  h5 {
+  .plan_desc {
     color: $middle-grey;
   }
   .plan_price {
     color: $dark-grey;
+  }
+  .plan_btn {
+    color: $white;
+    background: $dark-blue;
+    box-shadow: 0 5px 5px transparentize($dark-blue, 0.8),
+      0 15px 15px transparentize($dark-blue, 0.9);
   }
   .plan_btn-mob {
     color: $middle-grey;

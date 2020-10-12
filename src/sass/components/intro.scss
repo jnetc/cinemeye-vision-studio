@@ -43,7 +43,7 @@
 
   @media screen and (max-width: $tablets) {
     grid-template-columns: 1fr;
-    padding: 0 15px;
+    padding: 24px 15px;
   }
   @media screen and (orientation: landscape) and (max-device-width: $tablets) {
     grid-template-columns: 1fr 110px 1fr;

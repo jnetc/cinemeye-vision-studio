@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
 import Feautures from './Features';
+// Context
+import { useStore } from '../store/Store';
 
-const Plan = ({ context, selectBoolean, selectHandler }) => {
+const Plan = ({ context }) => {
   const {
     name,
     desc,
@@ -27,16 +29,18 @@ const Plan = ({ context, selectBoolean, selectHandler }) => {
     customService,
   };
 
+  const { select, selectHandler } = useStore();
+
   const [features, setFeatures] = useState(false);
   const featureToggle = () => setFeatures(!features);
   const refSelect = useRef(null);
 
-  const { plan, action } = selectBoolean;
+  const { plan, action } = select;
   // Проверяем на соответсвие имён
   // Записываем логическое значение
-  let select;
+  let selected;
   if (plan && refSelect.current.className.includes(plan)) {
-    select = action;
+    selected = action;
   }
 
   return (
@@ -46,16 +50,16 @@ const Plan = ({ context, selectBoolean, selectHandler }) => {
         ref={refSelect}
         className={`${
           popular
-            ? select
+            ? selected
               ? `plan_bg ${name.toLowerCase()} popular select`
               : `plan_bg ${name.toLowerCase()} popular`
-            : select
+            : selected
             ? `plan_bg ${name.toLowerCase()} select`
             : `plan_bg ${name.toLowerCase()}`
         }`}
       />
       <div className="plan_name">{name}</div>
-      <h5>{desc}</h5>
+      <div className="plan_desc">{desc}</div>
       <div className="plan_price">
         {price}€{from && <div className="plan_from">{from}</div>}
       </div>
@@ -63,14 +67,13 @@ const Plan = ({ context, selectBoolean, selectHandler }) => {
         type="button"
         className="plan_btn"
         onClick={() => selectHandler(refSelect)}>
-        {select ? 'selected' : 'select'}
+        {selected ? 'selected' : service1 ? 'select' : `let's talk`}
       </button>
       <button
         type="button"
         className={features ? 'plan_btn-mob active' : 'plan_btn-mob'}
         onClick={() => featureToggle()}>
         {features ? 'hide features' : 'show features'}
-        {/* <div className={features ? 'plan_btn-show active' : 'plan_btn-show'} /> */}
       </button>
       <Feautures data={feauters} toggle={features} />
     </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 // Styles
 import '../../sass/components/header.scss';
@@ -6,25 +6,29 @@ import '../../sass/components/header.scss';
 import Logo from './Logo';
 import NavLink from './NavLink';
 import Languages from './Languages';
+import Modal from '../modal/Modal';
 // Context
 import { useStore } from '../store/Store';
 import { localeHandler } from '../store/remapQueries';
+
+const defaultNavNames = [
+  { link: 'Intro' },
+  { link: 'Values' },
+  { link: 'Plans' },
+  { link: `Meet us` },
+];
 
 // Header Component
 const Header = () => {
   // Получаем данные с CMS
   const query = useStaticQuery(ctx);
   // Получаем глобальные переменные
-  const { lang } = useStore();
+  const { lang, modalHandler } = useStore();
   // Трансформация данных
   const data = localeHandler(query, lang);
 
-  const defaultNavNames = [
-    { link: 'Intro' },
-    { link: 'Values' },
-    { link: 'Plans' },
-    { link: `Meet us` },
-  ];
+  const [showMobMenu, setShowMobMenu] = useState(false);
+
   let context = data?.allDatoCmsNav;
   if (!context) {
     context = defaultNavNames;
@@ -39,13 +43,32 @@ const Header = () => {
   });
 
   return (
-    <header>
-      <nav className="navigation">
-        <Logo />
+    <>
+      <header>
+        <nav className="navigation">
+          <Logo />
+          <button
+            type="button"
+            id="nav-mob"
+            onClick={() => setShowMobMenu(true)}>
+            <span />
+          </button>
+          <ul>{links}</ul>
+          <Languages />
+        </nav>
+      </header>
+      <template id="nav-mob-menu" className={showMobMenu ? 'show' : ''}>
+        <span
+          id="close"
+          role="button"
+          aria-label="close"
+          tabIndex={0}
+          onKeyDown={() => setShowMobMenu(false)}
+          onClick={() => setShowMobMenu(false)}
+        />
         <ul>{links}</ul>
-        <Languages />
-      </nav>
-    </header>
+      </template>
+    </>
   );
 };
 
