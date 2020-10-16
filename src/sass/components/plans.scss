@@ -37,6 +37,7 @@
     align-items: stretch;
     grid-template-columns: 1fr;
     gap: 50px 0px;
+    padding: 250px 10px;
   }
   @media screen and (orientation: landscape) and (max-device-width: $tablets) {
     align-items: stretch;

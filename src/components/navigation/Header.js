@@ -6,7 +6,6 @@ import '../../sass/components/header.scss';
 import Logo from './Logo';
 import NavLink from './NavLink';
 import Languages from './Languages';
-import Modal from '../modal/Modal';
 // Context
 import { useStore } from '../store/Store';
 import { localeHandler } from '../store/remapQueries';
@@ -23,7 +22,7 @@ const Header = () => {
   // Получаем данные с CMS
   const query = useStaticQuery(ctx);
   // Получаем глобальные переменные
-  const { lang, modalHandler } = useStore();
+  const { lang } = useStore();
   // Трансформация данных
   const data = localeHandler(query, lang);
 

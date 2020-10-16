@@ -8,15 +8,16 @@ import Header from '../components/navigation/Header';
 import Intro from '../components/intro/Intro';
 import Values from '../components/values/Values';
 import Plans from '../components/plans/Plans';
-import Modal from '../components/modal/Modal';
+import Youtube from '../components/modals/Youtube';
+import Mailform from '../components/modals/Mailform';
 
 // const Intro = lazy(() => import('../components/intro'));
 // const Header = lazy(() => import('../components/header'));
 // const Values = lazy(() => import('../components/values'));
 // const Modal = lazy(() => import('../components/modal'));
 
-const IndexPage = () => {
-  const ctx = useStore();
+const IndexPage = props => {
+  const data = useStore();
   const helmet = {
     lang: 'fi',
     title: 'Cinemeye Vision Studio | Helsinki',
@@ -29,20 +30,21 @@ const IndexPage = () => {
   // https://www.gatsbyjs.com/docs/using-client-side-only-packages/#workaround-4-use-reactlazy-and-suspense-on-client-side-only
   const isSSR = typeof window === 'undefined';
 
-  // console.log('refresh index page', ctx?.lang);
   return (
     <>
       <SEO
-        lang={ctx?.lang}
-        theme={ctx?.theme}
-        modal={ctx?.modal.active}
+        lang={data?.lang}
+        theme={data?.theme}
+        modal={data?.modal.active}
+        select={data?.select.action}
         title={helmet.title}
         description={helmet.description}
         meta={helmet.meta}
       />
       {!isSSR && (
         <Suspense fallback={<div>Loading</div>}>
-          <Modal />
+          <Youtube />
+          <Mailform />
         </Suspense>
       )}
       <Header />

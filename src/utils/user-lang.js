@@ -1,15 +1,14 @@
-const language = () => {
-  const userLang = window.navigator.language;
-  if (userLang.startsWith('sv')) {
+const language = lang => {
+  if (lang.startsWith('sv')) {
     return 'sv';
   }
-  if (userLang.startsWith('no')) {
+  if (lang.startsWith('no')) {
     return 'no';
   }
-  if (userLang.startsWith('en')) {
+  if (lang.startsWith('en')) {
     return 'en';
   }
   return 'fi';
 };
 
-export default language();
+export default language;

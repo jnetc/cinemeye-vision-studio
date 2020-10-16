@@ -27,25 +27,31 @@ export const Store = ({ children }) => {
   // Plan selection
   const selectHandler = refSelect => {
     // Получаем текущий класс плана
-    const currentPlanClass = refSelect.current.classList[1];
-    // Проверяем соответствие и создаем объект с нужными значениями
-    if (refSelect.current.className.includes('select')) {
-      setSelect({ plan: currentPlanClass, action: false });
+    const currentPlanClass = refSelect.current?.classList[1];
+    if (currentPlanClass) {
+      // Проверяем соответствие и создаем объект с нужными значениями
+      if (refSelect.current.className.includes('select')) {
+        setSelect({ plan: currentPlanClass, action: false });
+      } else {
+        setSelect({ plan: currentPlanClass, action: true });
+      }
     } else {
-      setSelect({ plan: currentPlanClass, action: true });
+      // Модальное окно
+      setSelect({ plan: refSelect.plan, action: refSelect.action });
     }
   };
 
   useEffect(() => {
     // Определяем цветовую тему
-    // themeHandler().then(data => setTheme(data));
+    themeHandler().then(data => setTheme(data));
     // Определение языка
+    const userLang = window.navigator.language;
     let langLS = localStorage.getItem('lang');
 
     // Проверяем хранилище
     if (!langLS) {
-      localStorage.setItem('lang', language);
-      setLang(language);
+      localStorage.setItem('lang', language(userLang));
+      setLang(language(userLang));
       return;
     }
     setLang(langLS);

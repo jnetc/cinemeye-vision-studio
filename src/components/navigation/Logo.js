@@ -12,7 +12,6 @@ const Logo = () => {
   if (!data?.file?.publicURL) {
     return null;
   }
-
   return (
     <Link id="logo" to="/">
       <img src={data.file.publicURL} alt="logo" />

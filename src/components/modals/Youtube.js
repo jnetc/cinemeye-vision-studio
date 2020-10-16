@@ -1,8 +1,8 @@
 import React from 'react';
 
-import '../../sass/components/modal.scss';
+import '../../sass/components/modals.scss';
 import { useStore } from '../store/Store';
-const Modal = () => {
+const Youtube = () => {
   const ctx = useStore();
   return (
     <template id="modal" className={ctx?.modal.active ? 'show' : ''}>
@@ -24,4 +24,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default Youtube;

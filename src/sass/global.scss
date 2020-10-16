@@ -50,12 +50,13 @@ h2 {
   letter-spacing: 0.15em;
 }
 p,
-pre {
+pre,
+textarea {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 21px;
-  letter-spacing: 0.15em;
+  // letter-spacing: 0.15em;
 }
 
 ::selection {
