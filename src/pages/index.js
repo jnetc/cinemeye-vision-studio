@@ -8,6 +8,7 @@ import Header from '../components/navigation/Header';
 import Intro from '../components/intro/Intro';
 import Values from '../components/values/Values';
 import Plans from '../components/plans/Plans';
+import Meetus from '../components/meetus/Meetus';
 import Youtube from '../components/modals/Youtube';
 import Mailform from '../components/modals/Mailform';
 
@@ -36,6 +37,7 @@ const IndexPage = props => {
         lang={data?.lang}
         theme={data?.theme}
         modal={data?.modal.active}
+        menu={data?.menu.active}
         select={data?.select.action}
         title={helmet.title}
         description={helmet.description}
@@ -53,6 +55,7 @@ const IndexPage = props => {
         <Suspense fallback={<div>Loading</div>}>
           <Values />
           <Plans />
+          <Meetus />
         </Suspense>
       )}
     </>

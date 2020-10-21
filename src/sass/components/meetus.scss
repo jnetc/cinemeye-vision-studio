@@ -1,0 +1,177 @@
+@import '../colors.scss';
+@import '../sizes.scss';
+
+#meetus {
+  display: grid;
+  gap: 24px;
+  justify-content: center;
+  padding: 100px 24px;
+  position: relative;
+  @media screen and (min-width: 1500px) {
+    grid-template-columns: 1fr 696px 696px 1fr;
+  }
+  @media screen and (max-width: $tablets) {
+    grid-template-columns: 1fr minmax(310px, 420px) 1fr;
+    padding: 100px 15px;
+  }
+  @media screen and (max-width: $phones) {
+    gap: 0px;
+    padding: 100px 15px;
+  }
+  @media screen and (orientation: landscape) and (max-device-width: $tablets) {
+    grid-template-columns: 1fr minmax(290px, 500px) 1fr;
+    padding: 100px 15px;
+  }
+  .swiper-container {
+    width: 100%;
+    grid-column: 2 / -2;
+    align-items: center;
+    padding: 0 10px 80px;
+    position: relative;
+    overflow: hidden;
+    @media screen and (max-width: 1500px) {
+      max-width: 800px;
+    }
+    @media screen and (max-width: $tablets) {
+      grid-column: 2 / -2;
+    }
+  }
+  .swiper-wrapper {
+    display: flex;
+    width: fit-content;
+  }
+  .swiper-slide {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 45px;
+    position: relative;
+    border-radius: 20px;
+    cursor: grab;
+    @media screen and (max-width: $tablets) {
+      grid-template-columns: 1fr;
+    }
+    @media screen and (max-width: $phones) {
+      padding: 40px 30px;
+      width: 320px;
+    }
+    .gatsby-image-wrapper {
+      width: 200px;
+      height: 200px;
+      align-self: center;
+      border-radius: 50%;
+      border: 10px solid transparent;
+      object-fit: cover;
+      @media screen and (max-width: $tablets) {
+        justify-self: center;
+      }
+    }
+    .worker-info {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      @media screen and (max-width: $tablets) {
+        padding-top: 40px;
+      }
+      h3 {
+        font-size: 20px;
+        color: $black;
+        @media screen and (max-width: $tablets) {
+          text-align: center;
+        }
+      }
+      span {
+        margin: 13px 0 20px;
+        font-size: 14px;
+        color: $middle-grey;
+        @media screen and (max-width: $tablets) {
+          text-align: center;
+        }
+      }
+      p {
+        color: $black;
+        letter-spacing: 0.05rem;
+      }
+    }
+    .worker-new {
+      padding: 5px 15px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: $white;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 15px;
+      letter-spacing: 0.08rem;
+      background: $dark-blue;
+      box-shadow: 0 8px 8px transparentize($dark-blue, 0.9),
+        0 20px 20px transparentize($dark-blue, 0.95);
+    }
+  }
+  // PAGINATION STYLE
+  .swiper-pagination {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transition: 300ms opacity;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 100%;
+    opacity: 0.3;
+    transition: 0.5s opacity;
+    cursor: pointer;
+  }
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+}
+
+.dark {
+  #meetus {
+    background-color: $bg-dark;
+    .swiper-slide {
+      background-color: $black;
+      .gatsby-image-wrapper {
+        border-color: $dark-blue;
+      }
+      .worker-info {
+        h3 {
+          color: $light-grey;
+        }
+        span {
+          color: $regular-grey;
+        }
+        p {
+          color: $light-grey;
+        }
+      }
+    }
+    .swiper-pagination-bullet {
+      background: $dark-blue;
+    }
+  }
+}
+.light {
+  #meetus {
+    background-color: $bg-light;
+    .swiper-slide {
+      background-color: $white;
+      box-shadow: 0 8px 8px transparentize($blue, 0.9),
+        0 20px 20px transparentize($blue, 0.95);
+      .gatsby-image-wrapper {
+        border-color: lighten($blue, 37);
+      }
+    }
+    .swiper-pagination-bullet {
+      background: $blue;
+    }
+  }
+}

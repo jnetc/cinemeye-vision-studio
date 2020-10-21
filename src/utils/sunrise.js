@@ -30,8 +30,10 @@ export const themeHandler = async () => {
   const sunsetMin = parseInt(results.sunset.split('T')[1].split(':')[1]);
 
   if (
-    (currentHour > sunriseHour || currentMin > sunriseMin) &&
-    (currentHour < sunsetHour || currentMin < sunsetMin)
+    currentHour > sunriseHour &&
+    currentMin > sunriseMin &&
+    currentHour < sunsetHour &&
+    currentMin < sunsetMin
   ) {
     return 'light';
   }

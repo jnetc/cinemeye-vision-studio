@@ -119,13 +119,16 @@
       position: absolute;
       top: 50px;
       left: 50%;
-      // color: $blue;
+      color: $blue;
       font-size: 15px;
       font-weight: 700;
       text-align: center;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       transform: translate(-50%, 0);
+      &::after {
+        content: 'most popular';
+      }
       @media screen and (max-width: 333px) {
         top: 40px;
       }
@@ -331,14 +334,11 @@
       }
     }
   }
-  #plan_pop {
-    color: $light-blue;
-  }
   .plan_name {
     color: $light-grey;
   }
   .plan_desc {
-    color: $middle-grey;
+    color: $regular-grey;
   }
   .plan_price {
     color: $light-grey;
@@ -391,9 +391,6 @@
         }
       }
     }
-  }
-  #plan_pop {
-    color: $blue;
   }
   .plan_name {
     color: $dark-grey;

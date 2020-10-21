@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 // import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, meta, lang, title, theme, modal, select }) {
+function SEO({ description, meta, lang, title, theme, modal, select, menu }) {
   // const { site } = useStaticQuery(
   //   graphql`
   //     query {
@@ -21,6 +21,8 @@ function SEO({ description, meta, lang, title, theme, modal, select }) {
   if (modal) {
     active = true;
   } else if (select) {
+    active = true;
+  } else if (menu) {
     active = true;
   } else {
     active = false;

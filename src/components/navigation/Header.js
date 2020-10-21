@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 // Styles
 import '../../sass/components/header.scss';
@@ -22,11 +22,9 @@ const Header = () => {
   // Получаем данные с CMS
   const query = useStaticQuery(ctx);
   // Получаем глобальные переменные
-  const { lang } = useStore();
+  const { lang, menu, menuHandler } = useStore();
   // Трансформация данных
   const data = localeHandler(query, lang);
-
-  const [showMobMenu, setShowMobMenu] = useState(false);
 
   let context = data?.allDatoCmsNav;
   if (!context) {
@@ -49,21 +47,22 @@ const Header = () => {
           <button
             type="button"
             id="nav-mob"
-            onClick={() => setShowMobMenu(true)}>
+            aria-label="button"
+            onClick={() => menuHandler({ active: true })}>
             <span />
           </button>
           <ul>{links}</ul>
           <Languages />
         </nav>
       </header>
-      <template id="nav-mob-menu" className={showMobMenu ? 'show' : ''}>
+      <template id="nav-mob-menu" className={menu.active ? 'show' : ''}>
         <span
           id="close"
           role="button"
           aria-label="close"
           tabIndex={0}
-          onKeyDown={() => setShowMobMenu(false)}
-          onClick={() => setShowMobMenu(false)}
+          onKeyDown={() => menuHandler({ active: false })}
+          onClick={() => menuHandler({ active: false })}
         />
         <ul>{links}</ul>
       </template>

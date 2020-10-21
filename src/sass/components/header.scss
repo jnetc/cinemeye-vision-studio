@@ -31,9 +31,8 @@ header {
     padding: 0 10px;
   }
   #logo img {
-    width: 128px;
     @media screen and (max-width: $tablets) {
-      width: 110px;
+      height: 27px;
     }
   }
   ul {
@@ -107,7 +106,7 @@ header {
       pointer-events: none;
       .lang {
         padding: 5px 10px;
-        margin: 5px 15px 5px 25px;
+        margin: 5px 15px;
         position: relative;
         outline: none;
         border: none;
@@ -123,19 +122,19 @@ header {
         &:hover {
           color: $middle-grey;
         }
-        &.act-lang {
-          &::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 5px 0 5px 8px;
-            border-color: transparent transparent transparent $middle-grey;
-            position: absolute;
-            top: 8px;
-            left: -5px;
-          }
-        }
+        // &.act-lang {
+        //   &::after {
+        //     content: '';
+        //     width: 0;
+        //     height: 0;
+        //     border-style: solid;
+        //     border-width: 5px 0 5px 8px;
+        //     border-color: transparent transparent transparent $middle-grey;
+        //     position: absolute;
+        //     top: 8px;
+        //     left: -5px;
+        //   }
+        // }
       }
     }
   }
@@ -194,13 +193,42 @@ header {
         margin: 20px 0;
         a.nav-link {
           padding: 12px;
-          color: $white;
           font-size: 2rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
           border: 2px solid transparent;
           transition: all 0.3s ease-in-out;
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.light {
+  #nav-mob-menu {
+    ul {
+      li {
+        .nav-link {
+          color: $black;
+          &:hover {
+            border-color: $black;
+          }
+          &.act-link {
+            border-color: $black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark {
+  #nav-mob-menu {
+    ul {
+      li {
+        .nav-link {
+          color: $white;
           &:hover {
             border-color: $white;
           }

@@ -14,7 +14,7 @@ const Logo = () => {
   }
   return (
     <Link id="logo" to="/">
-      <img src={data.file.publicURL} alt="logo" />
+      <img width="128" height="30" src={data.file.publicURL} alt="logo" />
     </Link>
   );
 };

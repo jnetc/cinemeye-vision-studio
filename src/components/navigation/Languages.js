@@ -21,7 +21,7 @@ const Languages = () => {
     { name: 'no', lang: 'Norsk' },
     { name: 'fi', lang: 'Suomi' },
     { name: 'sv', lang: 'Svenska' },
-    { name: 'ru', lang: 'Русский' },
+    // { name: 'ru', lang: 'Русский' },
   ];
 
   const languages = langs.map(l => {
@@ -29,7 +29,8 @@ const Languages = () => {
       <button
         type="button"
         key={l.name}
-        className={ctx?.lang === l.name ? 'lang act-lang' : 'lang'}
+        className="lang"
+        // className={ctx?.lang === l.name ? 'lang act-lang' : 'lang'}
         onClick={() => {
           ctx.langHandler(l.name);
         }}>

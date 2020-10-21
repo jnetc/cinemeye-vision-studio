@@ -5,8 +5,9 @@ import language from '../../utils/user-lang';
 // Параметры состояния по умолчанию
 const state = {
   lang: 'en',
-  theme: 'dark',
+  theme: 'light',
   modal: { active: false },
+  menu: { active: false },
   select: { plan: '', action: false },
 };
 
@@ -21,6 +22,7 @@ export const Store = ({ children }) => {
   // Создаем глобальные состояния для Index
   const [lang, setLang] = useState('');
   const [modal, setModal] = useState(state.modal);
+  const [menu, setMenu] = useState(state.menu);
   const [theme, setTheme] = useState(state.theme);
   const [select, setSelect] = useState(state.select);
 
@@ -73,6 +75,8 @@ export const Store = ({ children }) => {
         theme,
         modal,
         modalHandler: obj => setModal(obj),
+        menu,
+        menuHandler: obj => setMenu(obj),
         select,
         selectHandler,
       }}>

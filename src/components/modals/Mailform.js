@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
-
+import { graphql, useStaticQuery } from 'gatsby';
+// Styles
 import '../../sass/components/modals.scss';
 import '../../sass/components/mailform.scss';
-
+// Context
 import { useStore } from '../store/Store';
+import { localeHandler } from '../store/remapQueries';
 
 const Mailform = () => {
-  const { select, selectHandler } = useStore();
+  // Получаем данные с CMS
+  const query = useStaticQuery(ctx);
+  // Получаем глобальные переменные
+  const { lang, select, selectHandler } = useStore();
+  // Трансформация данных
+  const data = localeHandler(query, lang);
+  const context = data?.allDatoCmsPlanFrom;
 
   const [status, setStatus] = useState({
     submitted: false,
@@ -22,12 +30,12 @@ const Mailform = () => {
     message: '',
   });
 
-  const handleResponse = (status, msg) => {
+  const handleResponse = status => {
     if (status === 200) {
       setStatus({
         submitted: true,
         submitting: false,
-        info: { error: false, msg: 'Message sent successfully.' },
+        info: { error: false, msg: context?.success },
       });
       setInputs({
         name: '',
@@ -37,7 +45,7 @@ const Mailform = () => {
       });
     } else {
       setStatus({
-        info: { error: true, msg: 'Message not sent.' },
+        info: { error: true, msg: context?.error },
       });
     }
   };
@@ -82,17 +90,13 @@ const Mailform = () => {
           onClick={() => selectHandler({ plan: select.plan, action: false })}
         />
         <span id="modal-plan-title">
-          <span>You have chosen a plan</span>
+          <span>{context?.title}</span>
           <b>{`${select.plan}`}</b>
         </span>
-        <p>
-          Scale up a content platform to power one — or hundreds of — digital
-          experiences. Grows with your needs, from one team or business unit to
-          your whole organization.
-        </p>
+        <p>{context?.desc}</p>
         <form method="POST" onSubmit={handleOnSubmit}>
           <label className="plan-input">
-            Your name *
+            {context?.name} *
             <input
               type="text"
               name="name"
@@ -103,7 +107,7 @@ const Mailform = () => {
             />
           </label>
           <label className="plan-input">
-            Your email *
+            {context?.email} *
             <input
               type="email"
               name="email"
@@ -114,7 +118,7 @@ const Mailform = () => {
             />
           </label>
           <label className="plan-input">
-            Your phone number
+            {context?.tel}
             <input
               type="tel"
               name="tel"
@@ -124,11 +128,10 @@ const Mailform = () => {
             />
           </label>
           <label className="plan-input">
-            Talk us
+            {context?.message}
             <textarea
               name="message"
               rows="3"
-              placeholder="Fill field if you need"
               onChange={handleOnChange}
               value={inputs.message}
             />
@@ -145,9 +148,9 @@ const Mailform = () => {
             disabled={status.submitting}>
             {!status.submitting
               ? !status.submitted
-                ? 'Submit'
-                : 'Submitted'
-              : 'Submitting...'}
+                ? context?.submit.split(',')[0]
+                : context?.submit.split(',')[2]
+              : context?.submit.split(',')[1]}
           </button>
         </form>
       </section>
@@ -156,3 +159,23 @@ const Mailform = () => {
 };
 
 export default Mailform;
+
+// GrapQL запрос
+const ctx = graphql`
+  query {
+    allDatoCmsPlanFrom {
+      nodes {
+        locale
+        email
+        desc
+        title
+        tel
+        submit
+        name
+        message
+        success
+        error
+      }
+    }
+  }
+`;

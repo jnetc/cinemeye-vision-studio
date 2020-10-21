@@ -5,11 +5,11 @@
   justify-content: center;
   @media screen and (max-width: 600px) {
     overflow: auto;
-    align-items: end;
+    align-items: self-start;
   }
   @media screen and (max-width: $tablets) and (orientation: landscape) {
     overflow: auto;
-    align-items: end;
+    align-items: self-start;
   }
   #modal-plan-close {
     width: 40px;
@@ -111,9 +111,6 @@
       &:focus {
         border-bottom-color: $blue;
       }
-      // &:invalid {
-      //   border-bottom-color: $magenta;
-      // }
     }
   }
   .form_btn {
@@ -142,6 +139,10 @@
       box-shadow: none;
     }
   }
+  .success,
+  .error {
+    font-weight: 700;
+  }
 }
 
 .light {
@@ -151,6 +152,12 @@
       box-shadow: 0 8px 8px transparentize($blue, 0.9),
         0 20px 20px transparentize($blue, 0.95);
     }
+    .success {
+      color: #0adb0a;
+    }
+    .error {
+      color: #db0a0a;
+    }
   }
 }
 
@@ -159,7 +166,7 @@
     #modal-plan-close {
       &::after,
       &::before {
-        background-color: $middle-grey;
+        background-color: $regular-grey;
       }
     }
     .plan-form {
@@ -175,14 +182,20 @@
         }
       }
       p {
-        color: $middle-grey;
+        color: $regular-grey;
       }
     }
     .plan-input {
-      color: $middle-grey;
+      color: $light-grey;
       textarea {
         color: $light-grey;
       }
+    }
+    .success {
+      color: #90f190;
+    }
+    .error {
+      color: #f19090;
     }
   }
 }

@@ -45,7 +45,7 @@ const Plan = ({ context }) => {
 
   return (
     <div className="plan">
-      {popular ? <div id="plan_pop">most popular</div> : null}
+      {popular ? <div id="plan_pop"></div> : null}
       <div
         ref={refSelect}
         className={`${

@@ -13,10 +13,12 @@ const findLanguage = (nodes, lang, nav) => {
     let arr;
     // Деструкция объекта с массивами
     let { plan } = n;
+    let { slide } = n;
     let { navigation } = n;
 
     // Проверка
     if (plan) arr = plan;
+    if (slide) arr = slide;
     if (navigation) arr = navigation;
 
     arr.forEach((p, i) => {
@@ -62,6 +64,10 @@ export const localeHandler = (context, lang) => {
       }
       // Plans
       if (element.nodes[0].plan) {
+        arr = findLanguage(element.nodes, lang, undefined);
+      }
+      // Slides
+      if (element.nodes[0].slide) {
         arr = findLanguage(element.nodes, lang, undefined);
       }
 
