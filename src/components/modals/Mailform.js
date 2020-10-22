@@ -72,7 +72,7 @@ const Mailform = () => {
     // EMAILJS - не нужно делать под функцию в netlify
     const res = await emailjs.send(
       process.env.GATSBY_EMAILJS_SERVICE_ID,
-      process.env.GATSBY_EMAILJS_TEMPLATE_ID,
+      process.env.GATSBY_EMAILJS_TEMPLATE_ID_PLAN,
       inputs,
       process.env.GATSBY_EMAILJS_USER_ID
     );
@@ -95,7 +95,7 @@ const Mailform = () => {
         </span>
         <p>{context?.desc}</p>
         <form method="POST" onSubmit={handleOnSubmit}>
-          <label className="plan-input">
+          <label className="form-input">
             {context?.name} *
             <input
               type="text"
@@ -106,7 +106,7 @@ const Mailform = () => {
               required
             />
           </label>
-          <label className="plan-input">
+          <label className="form-input">
             {context?.email} *
             <input
               type="email"
@@ -117,7 +117,7 @@ const Mailform = () => {
               required
             />
           </label>
-          <label className="plan-input">
+          <label className="form-input">
             {context?.tel}
             <input
               type="tel"
@@ -127,7 +127,7 @@ const Mailform = () => {
               value={inputs.tel}
             />
           </label>
-          <label className="plan-input">
+          <label className="form-input">
             {context?.message}
             <textarea
               name="message"

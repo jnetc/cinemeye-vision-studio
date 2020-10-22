@@ -11,18 +11,16 @@ import Plans from '../components/plans/Plans';
 import Meetus from '../components/meetus/Meetus';
 import Youtube from '../components/modals/Youtube';
 import Mailform from '../components/modals/Mailform';
+import Credits from '../components/credits/Credits';
 
 // const Intro = lazy(() => import('../components/intro'));
 // const Header = lazy(() => import('../components/header'));
 // const Values = lazy(() => import('../components/values'));
 // const Modal = lazy(() => import('../components/modal'));
 
-const IndexPage = props => {
+const IndexPage = () => {
   const data = useStore();
   const helmet = {
-    lang: 'fi',
-    title: 'Cinemeye Vision Studio | Helsinki',
-    description: 'Cinematography & Media Production',
     meta: {
       url: 'https://cinemeye.com',
       image: 'https://cinemeye.com/images/og.png',
@@ -39,8 +37,6 @@ const IndexPage = props => {
         modal={data?.modal.active}
         menu={data?.menu.active}
         select={data?.select.action}
-        title={helmet.title}
-        description={helmet.description}
         meta={helmet.meta}
       />
       {!isSSR && (
@@ -56,6 +52,7 @@ const IndexPage = props => {
           <Values />
           <Plans />
           <Meetus />
+          <Credits />
         </Suspense>
       )}
     </>

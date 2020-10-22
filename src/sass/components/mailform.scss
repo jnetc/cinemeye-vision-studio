@@ -83,66 +83,67 @@
       padding: 65px 15px;
     }
   }
-  form {
+}
+
+form {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  input,
+  textarea {
+    max-width: 100%;
     min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .plan-input {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-    input,
-    textarea {
-      max-width: 100%;
-      min-width: 100%;
-      margin-top: 5px;
-      padding: 10px;
-      border: none;
-      border-bottom: 2px solid $dark-blue;
-      background: transparent;
-      font-size: 1rem;
-      &::placeholder {
-        opacity: 0.5;
-      }
-      &:focus {
-        border-bottom-color: $blue;
-      }
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid $dark-blue;
+    background: transparent;
+    font-size: 1rem;
+    &::placeholder {
+      opacity: 0.5;
+    }
+    &:focus {
+      border-bottom-color: $blue;
     }
   }
-  .form_btn {
-    min-width: 220px;
-    margin: 10px auto 0;
-    padding: 13px 0;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid transparent;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 25px;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    color: $white;
-    background: $dark-blue;
-    box-shadow: 0 5px 5px transparentize($dark-blue, 0.8),
-      0 15px 15px transparentize($dark-blue, 0.9);
-    &:hover {
-      background: lighten($dark-blue, 5);
-    }
-    &:disabled {
-      background: lighten($black, 10);
-      box-shadow: none;
-    }
+}
+.form_btn {
+  min-width: 220px;
+  margin: 10px auto 0;
+  padding: 13px 0;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  color: $white;
+  background: $dark-blue;
+  box-shadow: 0 5px 5px transparentize($dark-blue, 0.8),
+    0 15px 15px transparentize($dark-blue, 0.9);
+  &:hover {
+    background: lighten($dark-blue, 5);
   }
-  .success,
-  .error {
-    font-weight: 700;
+  &:disabled {
+    background: lighten($black, 10);
+    box-shadow: none;
   }
+}
+.success,
+.error {
+  font-weight: 700;
 }
 
 .light {
@@ -152,12 +153,13 @@
       box-shadow: 0 8px 8px transparentize($blue, 0.9),
         0 20px 20px transparentize($blue, 0.95);
     }
-    .success {
-      color: #0adb0a;
-    }
-    .error {
-      color: #db0a0a;
-    }
+  }
+  .success {
+    color: #0f860f;
+  }
+  .error {
+    color: #db0a0a;
+    background-color: rgb(245, 245, 245);
   }
 }
 
@@ -185,17 +187,17 @@
         color: $regular-grey;
       }
     }
-    .plan-input {
+  }
+  .form-input {
+    color: $light-grey;
+    textarea {
       color: $light-grey;
-      textarea {
-        color: $light-grey;
-      }
     }
-    .success {
-      color: #90f190;
-    }
-    .error {
-      color: #f19090;
-    }
+  }
+  .success {
+    color: #90f190;
+  }
+  .error {
+    color: #f19090;
   }
 }

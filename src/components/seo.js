@@ -1,21 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-// import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, meta, lang, title, theme, modal, select, menu }) {
-  // const { site } = useStaticQuery(
-  //   graphql`
-  //     query {
-  //       site {
-  //         siteMetadata {
-  //           title
-  //           description
-  //           author
-  //         }
-  //       }
-  //     }
-  //   `
-  // );
+// Context
+import { localeHandler } from './store/remapQueries';
+
+function SEO({ meta, lang, theme, modal, select, menu }) {
+  // Получаем данные с CMS
+  const query = useStaticQuery(ctx);
+  // Трансформация данных
+  const data = localeHandler(query, lang);
+  const context = data?.allDatoCmsSite?.globalSeo;
 
   let active;
   if (modal) {
@@ -32,27 +27,33 @@ function SEO({ description, meta, lang, title, theme, modal, select, menu }) {
     <Helmet>
       <html lang={lang} amp />
       <body className={active ? `${theme} modal-show` : theme} />
-      <title>{title}</title>
+      <title>{context?.siteName}</title>
       {/* Primary Meta Tags */}
       <meta
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
       />
-      <meta name="title" content={title} />
-      <meta name="description" content={description} />
+      <meta name="title" content={context?.siteName} />
+      <meta name="description" content={context?.fallbackSeo?.description} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={meta?.url} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={context?.siteName} />
+      <meta
+        property="og:description"
+        content={context?.fallbackSeo?.description}
+      />
       <meta property="og:image" content={meta?.image} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={meta?.url} />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
+      <meta property="twitter:title" content={context?.siteName} />
+      <meta
+        property="twitter:description"
+        content={context?.fallbackSeo?.description}
+      />
       <meta property="twitter:image" content={meta?.image} />
 
       <meta name="robots" content="index, follow" />
@@ -67,3 +68,20 @@ function SEO({ description, meta, lang, title, theme, modal, select, menu }) {
 }
 
 export default SEO;
+
+// GrapQL запрос
+const ctx = graphql`
+  query {
+    allDatoCmsSite {
+      nodes {
+        locale
+        globalSeo {
+          fallbackSeo {
+            description
+          }
+          siteName
+        }
+      }
+    }
+  }
+`;

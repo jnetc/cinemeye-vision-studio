@@ -1,0 +1,27 @@
+@import '../colors.scss';
+@import '../sizes.scss';
+
+footer {
+  height: 150px;
+  display: flex;
+  // justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: $bg-dark;
+  div {
+    display: flex;
+    align-items: center;
+    flex-grow: 5;
+    padding-top: 20px;
+    color: $light-grey;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+  span {
+    height: 20px;
+    flex-shrink: 1;
+    color: $regular-grey;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+}

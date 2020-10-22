@@ -4,27 +4,32 @@
 #meetus {
   display: grid;
   gap: 24px;
+  grid-template-columns: 1fr minmax(500px, 780px) 1fr;
+  grid-template-rows: 1fr 200px 1fr 1fr;
   justify-content: center;
   padding: 100px 24px;
   position: relative;
   @media screen and (min-width: 1500px) {
     grid-template-columns: 1fr 696px 696px 1fr;
+    grid-template-rows: 1fr 200px 1fr;
   }
   @media screen and (max-width: $tablets) {
     grid-template-columns: 1fr minmax(310px, 420px) 1fr;
-    padding: 100px 15px;
+    grid-template-rows: 1fr 200px 400px 400px;
+    padding: 100px 15px 70px;
   }
   @media screen and (max-width: $phones) {
     gap: 0px;
-    padding: 100px 15px;
+    padding: 100px 15px 70px;
   }
   @media screen and (orientation: landscape) and (max-device-width: $tablets) {
     grid-template-columns: 1fr minmax(290px, 500px) 1fr;
-    padding: 100px 15px;
+    padding: 100px 15px 70px;
   }
   .swiper-container {
     width: 100%;
     grid-column: 2 / -2;
+    grid-row: 1;
     align-items: center;
     padding: 0 10px 80px;
     position: relative;
@@ -132,6 +137,40 @@
   .swiper-pagination-bullet-active {
     opacity: 1;
   }
+  #meetus-title {
+    grid-column: 2/-2;
+    grid-row: 2;
+    margin: 70px 0;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  #meet-form {
+    grid-column: 2/3;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: $tablets) {
+      grid-column: 2;
+    }
+  }
+  #meetus-info {
+    grid-column: 3/4;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    padding: 15px;
+    white-space: pre-wrap;
+    letter-spacing: 0.05rem;
+    @media screen and (max-width: 1500px) {
+      grid-row: 4;
+      grid-column: 2;
+    }
+    @media screen and (max-width: $phones) {
+      padding: 0;
+    }
+  }
 }
 
 .dark {
@@ -157,6 +196,9 @@
     .swiper-pagination-bullet {
       background: $dark-blue;
     }
+    #meetus-title {
+      color: $light-grey;
+    }
   }
 }
 .light {
@@ -172,6 +214,9 @@
     }
     .swiper-pagination-bullet {
       background: $blue;
+    }
+    #meetus-title {
+      color: $dark-grey;
     }
   }
 }

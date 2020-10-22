@@ -4,8 +4,8 @@ import language from '../../utils/user-lang';
 
 // Параметры состояния по умолчанию
 const state = {
-  lang: 'en',
-  theme: 'light',
+  lang: 'fi',
+  theme: 'dark',
   modal: { active: false },
   menu: { active: false },
   select: { plan: '', action: false },

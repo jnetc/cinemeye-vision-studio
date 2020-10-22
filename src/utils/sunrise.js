@@ -29,11 +29,15 @@ export const themeHandler = async () => {
   const sunsetHour = parseInt(results.sunset.split('T')[1].split(':')[0]) + utc;
   const sunsetMin = parseInt(results.sunset.split('T')[1].split(':')[1]);
 
+  // console.log(results);
+  // console.log(
+  //   (currentHour > sunriseHour && currentMin > sunriseMin) ||
+  //     (currentHour < sunsetHour && currentMin < sunsetMin)
+  // );
+
   if (
-    currentHour > sunriseHour &&
-    currentMin > sunriseMin &&
-    currentHour < sunsetHour &&
-    currentMin < sunsetMin
+    (currentHour > sunriseHour && currentMin > sunriseMin) ||
+    (currentHour < sunsetHour && currentMin < sunsetMin)
   ) {
     return 'light';
   }
