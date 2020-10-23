@@ -16,7 +16,12 @@ const Image = () => {
     query {
       file(relativePath: { eq: "bg/bg-values.jpg" }) {
         childImageSharp {
-          fluid(fit: COVER, jpegQuality: 75, webpQuality: 75, maxWidth: 3840) {
+          fluid(
+            fit: COVER
+            quality: 75
+            background: "#000"
+            sizes: "(max-width: 3840px) calc(100vw - 40px), 3840px"
+          ) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
