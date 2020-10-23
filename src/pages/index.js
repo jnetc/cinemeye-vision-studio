@@ -31,7 +31,6 @@ const IndexPage = () => {
     },
   };
   // https://www.gatsbyjs.com/docs/using-client-side-only-packages/#workaround-4-use-reactlazy-and-suspense-on-client-side-only
-  const isSSR = typeof window === 'undefined';
 
   return (
     <>

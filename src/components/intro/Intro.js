@@ -5,7 +5,7 @@ import '../../sass/components/intro.scss';
 // Components
 import Image from './Image';
 import PlayButton from '../play-button/PlayButton';
-import FingerPrint from '../icons/FingerPrint';
+// import FingerPrint from '../icons/FingerPrint';
 import Title from './Title';
 // Context
 import { useStore } from '../store/Store';

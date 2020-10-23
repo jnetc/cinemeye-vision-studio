@@ -257,6 +257,7 @@
       grid-template-columns: 16px 1fr;
       gap: 15px;
       transition: all 0.3s ease-in-out;
+      overflow: hidden;
       p,
       pre {
         line-height: 130%;

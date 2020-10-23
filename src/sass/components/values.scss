@@ -3,14 +3,13 @@
 
 #values {
   width: 100%;
-  // height: 100%;
   display: grid;
   grid-template-columns: 1fr minmax(300px, 500px) 150px minmax(300px, 500px) 1fr;
-  grid-template-rows: 1fr;
   gap: 0px;
   align-items: center;
   padding: 250px 24px;
   position: relative;
+  // overflow: hidden;
   // См. глобольный стиль!!!
   .gatsby-image-wrapper {
     &::after {
@@ -24,8 +23,11 @@
     }
   }
 
-  @media screen and (min-width: 1700px) {
+  @media screen and (min-width: $special) {
     height: 100vh;
+    grid-template-columns:
+      1fr minmax(100px, 350px) minmax(300px, 500px) 150px minmax(300px, 500px)
+      minmax(100px, 350px) 1fr;
   }
   @media screen and (max-width: $tablets) {
     grid-template-columns: 1fr minmax(290px, 500px) 1fr;
@@ -86,6 +88,9 @@
       animation: line-height-values 5s ease-in-out infinite;
       animation-duration: 13s;
     }
+    @media screen and (min-width: $special) {
+      grid-column: 3 / 4;
+    }
     @media screen and (max-width: $tablets) {
       grid-column: 2/3;
       grid-row: 2/3;
@@ -118,6 +123,9 @@
       font-weight: 300;
       letter-spacing: 0.1em;
     }
+    @media screen and (min-width: $special) {
+      grid-column: 5/6;
+    }
     @media screen and (max-width: $tablets) {
       grid-column: 2/3;
       grid-row: 1/2;
@@ -134,5 +142,28 @@
 @keyframes line-height-values {
   50% {
     height: 100%;
+  }
+}
+
+//////// SKILLS
+#skills {
+  width: 1000px;
+  grid-column: 2/3;
+  justify-self: center;
+  align-self: flex-start;
+  display: none;
+  justify-content: space-between;
+  position: relative;
+  right: 30px;
+  user-select: none;
+  z-index: 50;
+  @media screen and (min-width: $special) {
+    display: flex;
+  }
+  h3 {
+    color: $light-grey;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
   }
 }

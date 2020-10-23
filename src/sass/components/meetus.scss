@@ -9,7 +9,7 @@
   justify-content: center;
   padding: 100px 24px;
   position: relative;
-  @media screen and (min-width: 1500px) {
+  @media screen and (min-width: $special) {
     grid-template-columns: 1fr 696px 696px 1fr;
     grid-template-rows: 1fr 200px 1fr;
   }
@@ -35,7 +35,7 @@
     padding: 0 10px 80px;
     position: relative;
     overflow: hidden;
-    @media screen and (max-width: 1500px) {
+    @media screen and (max-width: $special) {
       max-width: 800px;
     }
     @media screen and (max-width: $tablets) {
@@ -164,7 +164,7 @@
     padding: 15px;
     white-space: pre-wrap;
     letter-spacing: 0.05rem;
-    @media screen and (max-width: 1500px) {
+    @media screen and (max-width: $special) {
       grid-row: 4;
       grid-column: 2;
       padding: 0px;

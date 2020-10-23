@@ -5,6 +5,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import '../../sass/components/values.scss';
 // Components
 import Image from './Image';
+import Skills from './Skills';
 import PlayButton from '../play-button/PlayButton';
 // Context
 import { useStore } from '../store/Store';
@@ -22,6 +23,7 @@ const Values = () => {
   return (
     <section id="values">
       <Image />
+      <Skills skills={context?.skill} />
       <div id="value-pbt">
         <PlayButton link={context?.videoUrl} />
         <span />
@@ -48,6 +50,7 @@ const ctx = graphql`
         title
         context
         videoUrl
+        skill
       }
     }
   }

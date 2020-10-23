@@ -70,7 +70,9 @@ textarea {
 }
 
 section {
-  overflow: hidden;
+  @media screen and (max-width: $tablets) {
+    // overflow: hidden;
+  }
   // scroll-snap-align: start;
 }
 // См. intro и values стили!!!
