@@ -59,7 +59,7 @@ function SEO({ meta, lang, theme, modal, select, menu }) {
       <meta name="robots" content="index, follow" />
       <meta name="revisit-after" content="7 days" />
       <link
-        rel="stylesheet preload prefetch preconnect"
+        rel="stylesheet preload prefetch preconnect dns-prefetch"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
         as="style"
         type="text/css"></link>

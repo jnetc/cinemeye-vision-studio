@@ -114,7 +114,7 @@
     position: relative;
     align-self: flex-end;
     margin: 0 auto 40px;
-    border: 3px solid $middle-grey;
+    border: 3px solid $regular-grey;
     border-radius: 50px;
     z-index: 5;
     &::before {
@@ -124,13 +124,13 @@
       position: absolute;
       top: 7px;
       left: 9px;
-      background: $middle-grey;
+      background: $regular-grey;
       border-radius: 50px;
       animation: scroll-anim 3s ease-in-out infinite;
     }
     @media screen and (max-width: $tablets) {
       grid-column: 1;
-      display: none;
+      // display: none;
     }
     @media only screen and (orientation: landscape) and (max-device-width: $tablets) {
       grid-column: 1 / -1;
@@ -138,34 +138,34 @@
       margin: 0 auto 25px;
     }
   }
-  #scroll-mob-icon {
-    width: 60px;
-    height: 60px;
-    display: none;
-    border: 2px solid $dark-grey;
-    padding: 8px;
-    border-radius: 50%;
-    #fingerprint {
-      fill: none;
-      stroke: transparentize($middle-grey, 0.3);
-      stroke-linecap: round;
-      stroke-miterlimit: 10;
-      stroke-width: 1px;
-    }
-    @media screen and (max-width: $tablets) {
-      display: block;
-      grid-column: 1;
-      grid-row: 4;
-      align-self: flex-end;
-      margin: 0 auto 50px;
-      animation: finger-anim 5s ease-in-out infinite;
-    }
-    @media only screen and (orientation: landscape) and (max-device-width: $tablets) {
-      grid-column: 1 / -1;
-      grid-row: 3;
-      margin: 0 auto 25px;
-    }
-  }
+  // #scroll-mob-icon {
+  //   width: 60px;
+  //   height: 60px;
+  //   display: none;
+  //   border: 2px solid $dark-grey;
+  //   padding: 8px;
+  //   border-radius: 50%;
+  //   #fingerprint {
+  //     fill: none;
+  //     stroke: transparentize($middle-grey, 0.3);
+  //     stroke-linecap: round;
+  //     stroke-miterlimit: 10;
+  //     stroke-width: 1px;
+  //   }
+  //   @media screen and (max-width: $tablets) {
+  //     display: block;
+  //     grid-column: 1;
+  //     grid-row: 4;
+  //     align-self: flex-end;
+  //     margin: 0 auto 50px;
+  //     animation: finger-anim 5s ease-in-out infinite;
+  //   }
+  //   @media only screen and (orientation: landscape) and (max-device-width: $tablets) {
+  //     grid-column: 1 / -1;
+  //     grid-row: 3;
+  //     margin: 0 auto 25px;
+  //   }
+  // }
 }
 
 @keyframes scroll-anim {

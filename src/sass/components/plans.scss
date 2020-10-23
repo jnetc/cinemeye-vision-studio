@@ -192,24 +192,57 @@
       background-color: transparent;
       transition: all 0.3s ease-in-out;
       cursor: pointer;
-      &::before {
-        content: '';
-        width: 50px;
-        height: 5px;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        border-radius: 5px;
-        background: $blue;
-        transition: all 0.3s ease-in-out;
-        transform: translate(0, 0);
-      }
-      &.active {
+      // &::before {
+      //   content: '';
+      //   width: 50px;
+      //   height: 5px;
+      //   position: absolute;
+      //   top: 20px;
+      //   left: 20px;
+      //   border-radius: 5px;
+      //   background: $blue;
+      //   transition: all 0.3s ease-in-out;
+      //   transform: translate(0, 0);
+      // }
+      .plan_btn-show {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        position: relative;
+        border-radius: 50%;
+        &::after,
         &::before {
-          transform: translate(82px, 0);
-          background: $magenta;
+          content: '';
+          width: 15px;
+          height: 3px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          border-radius: 5px;
+          transition: all 0.3s ease-in-out;
+        }
+        &::after {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        &::before {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+        &.active {
+          &::after {
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          &::before {
+            transform: translate(-50%, -50%) rotate(135deg);
+          }
         }
       }
+
+      // &.active {
+      //   &::before {
+      //     transform: translate(82px, 0);
+      //     background: $magenta;
+      //   }
+      // }
       @media screen and (max-width: $tablets) {
         display: flex;
       }
@@ -375,6 +408,11 @@
       background-color: $white;
       box-shadow: 0 20px 20px transparentize($blue, 0.95),
         0 8px 8px transparentize($blue, 0.85);
+      @media screen and (max-width: $phones) {
+        box-shadow: 0 20px 20px transparentize($blue, 0.95),
+          0 -3px 8px transparentize($blue, 0.9),
+          0 8px 8px transparentize($blue, 0.85);
+      }
       &.select {
         background-color: darken($white, 1);
         border-color: transparent;

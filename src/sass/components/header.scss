@@ -203,20 +203,23 @@ header {
       }
     }
   }
+  @media screen and (max-width: $phones) {
+    ul li a.nav-link {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .light {
   #nav-mob-menu {
-    ul {
-      li {
-        .nav-link {
-          color: $black;
-          &:hover {
-            border-color: $black;
-          }
-          &.act-link {
-            border-color: $black;
-          }
+    ul li {
+      .nav-link {
+        color: $black;
+        &:hover {
+          border-color: $black;
+        }
+        &.act-link {
+          border-color: $black;
         }
       }
     }
@@ -225,16 +228,14 @@ header {
 
 .dark {
   #nav-mob-menu {
-    ul {
-      li {
-        .nav-link {
-          color: $white;
-          &:hover {
-            border-color: $white;
-          }
-          &.act-link {
-            border-color: $white;
-          }
+    ul li {
+      .nav-link {
+        color: $white;
+        &:hover {
+          border-color: $white;
+        }
+        &.act-link {
+          border-color: $white;
         }
       }
     }

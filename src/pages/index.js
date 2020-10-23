@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 // SEO Component
 import SEO from '../components/seo';
 import { useStore } from '../components/store/Store';
@@ -9,14 +9,18 @@ import Intro from '../components/intro/Intro';
 import Values from '../components/values/Values';
 import Plans from '../components/plans/Plans';
 import Meetus from '../components/meetus/Meetus';
+import Credits from '../components/credits/Credits';
 import Youtube from '../components/modals/Youtube';
 import Mailform from '../components/modals/Mailform';
-import Credits from '../components/credits/Credits';
 
 // const Intro = lazy(() => import('../components/intro'));
 // const Header = lazy(() => import('../components/header'));
-// const Values = lazy(() => import('../components/values'));
-// const Modal = lazy(() => import('../components/modal'));
+// const Values = lazy(() => import('../components/values/Values'));
+// const Plans = lazy(() => import('../components/plans/Plans'));
+// const Meetus = lazy(() => import('../components/meetus/Meetus'));
+// const Credits = lazy(() => import('../components/credits/Credits'));
+// const Youtube = lazy(() => import('../components/modals/Youtube'));
+// const Mailform = lazy(() => import('../components/modals/Mailform'));
 
 const IndexPage = () => {
   const data = useStore();
@@ -39,22 +43,14 @@ const IndexPage = () => {
         select={data?.select.action}
         meta={helmet.meta}
       />
-      {!isSSR && (
-        <Suspense fallback={<div>Loading</div>}>
-          <Youtube />
-          <Mailform />
-        </Suspense>
-      )}
+      <Youtube />
+      <Mailform />
       <Header />
       <Intro />
-      {!isSSR && (
-        <Suspense fallback={<div>Loading</div>}>
-          <Values />
-          <Plans />
-          <Meetus />
-          <Credits />
-        </Suspense>
-      )}
+      <Values />
+      <Plans />
+      <Meetus />
+      <Credits />
     </>
   );
 };

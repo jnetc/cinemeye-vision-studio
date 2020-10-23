@@ -15,8 +15,6 @@ const Meetform = () => {
   const data = localeHandler(query, lang);
   const context = data?.allDatoCmsMeet?.contact;
 
-  console.log(context);
-
   return <pre id="meetus-info">{context}</pre>;
 };
 

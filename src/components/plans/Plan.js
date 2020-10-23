@@ -73,6 +73,7 @@ const Plan = ({ context }) => {
         type="button"
         className={features ? 'plan_btn-mob active' : 'plan_btn-mob'}
         onClick={() => featureToggle()}>
+        <div className={features ? 'plan_btn-show active' : 'plan_btn-show'} />
         {features ? 'hide features' : 'show features'}
       </button>
       <Feautures data={feauters} toggle={features} />

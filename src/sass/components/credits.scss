@@ -4,10 +4,8 @@
 footer {
   height: 150px;
   display: flex;
-  // justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  background-color: $bg-dark;
   div {
     display: flex;
     align-items: center;
@@ -23,5 +21,16 @@ footer {
     color: $regular-grey;
     font-size: 0.8rem;
     text-transform: capitalize;
+  }
+}
+
+.dark {
+  footer {
+    background-color: $black;
+  }
+}
+.light {
+  footer {
+    background-color: $bg-dark;
   }
 }

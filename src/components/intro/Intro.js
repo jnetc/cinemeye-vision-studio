@@ -26,9 +26,9 @@ const Intro = () => {
       <PlayButton link={context?.videoUrl} />
       <Title context={context} />
       <div id="scroll-icon" />
-      <div id="scroll-mob-icon">
+      {/* <div id="scroll-mob-icon">
         <FingerPrint />
-      </div>
+      </div> */}
     </section>
   );
 };

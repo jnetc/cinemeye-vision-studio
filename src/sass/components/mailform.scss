@@ -3,14 +3,6 @@
 
 #modal-plan {
   justify-content: center;
-  @media screen and (max-width: 600px) {
-    overflow: auto;
-    align-items: self-start;
-  }
-  @media screen and (max-width: $tablets) and (orientation: landscape) {
-    overflow: auto;
-    align-items: self-start;
-  }
   #modal-plan-close {
     width: 40px;
     height: 40px;
@@ -43,6 +35,14 @@
     }
   }
   &.show {
+    @media screen and (max-width: 600px) {
+      overflow: auto;
+      align-items: self-start;
+    }
+    @media screen and (max-width: $tablets) and (orientation: landscape) {
+      overflow: auto;
+      align-items: self-start;
+    }
     .plan-form {
       transform: translate3d(0, 0, 0);
     }
