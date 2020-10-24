@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 // Context
 import { localeHandler } from './store/remapQueries';
 
-function SEO({ meta, lang, theme, modal, select, menu }) {
+function SEO({ meta, lang, modal, select, menu }) {
   // Получаем данные с CMS
   const query = useStaticQuery(ctx);
   // Трансформация данных
@@ -26,7 +26,7 @@ function SEO({ meta, lang, theme, modal, select, menu }) {
   return (
     <Helmet>
       <html lang={lang} amp />
-      <body className={active ? `${theme} modal-show` : theme} />
+      <body className={active ? `modal-show` : ''} />
       <title>{context?.siteName}</title>
       {/* Primary Meta Tags */}
       <meta

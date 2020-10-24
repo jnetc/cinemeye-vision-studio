@@ -20,8 +20,6 @@ body,
 #___gatsby,
 #gatsby-focus-wrapper {
   height: 100%;
-  // scroll-snap-type: y proximity;
-  // scroll-snap-points-y: repeat(300px);
 }
 
 ul {
@@ -56,7 +54,6 @@ textarea {
   font-size: 1rem;
   font-weight: 400;
   line-height: 21px;
-  // letter-spacing: 0.15em;
 }
 
 ::selection {
@@ -69,12 +66,6 @@ textarea {
   position: relative;
 }
 
-section {
-  @media screen and (max-width: $tablets) {
-    // overflow: hidden;
-  }
-  // scroll-snap-align: start;
-}
 // См. intro и values стили!!!
 #intro,
 #values {
@@ -89,6 +80,7 @@ section {
   }
 }
 
+/// PLAY BUTTON
 button.play-btn {
   width: 125px;
   height: 125px;
@@ -166,5 +158,32 @@ button.play-btn {
     svg {
       transform: scale(0.8);
     }
+  }
+}
+
+/// MAIN BUTTON
+.btn {
+  min-width: 220px;
+  padding: 13px 0;
+  position: relative;
+  overflow: hidden;
+  color: $white;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 25px;
+  background: $dark-blue;
+  box-shadow: 0 5px 5px transparentize($dark-blue, 0.8),
+    0 20px 20px transparentize($dark-blue, 0.9);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  z-index: 5;
+  &:hover {
+    background: lighten($dark-blue, 5);
+  }
+  &:disabled {
+    background: lighten($black, 10);
+    box-shadow: none;
   }
 }

@@ -6,6 +6,7 @@ footer {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: $black;
   div {
     display: flex;
     align-items: center;
@@ -21,16 +22,5 @@ footer {
     color: $regular-grey;
     font-size: 0.8rem;
     text-transform: capitalize;
-  }
-}
-
-.dark {
-  footer {
-    background-color: $black;
-  }
-}
-.light {
-  footer {
-    background-color: $bg-dark;
   }
 }

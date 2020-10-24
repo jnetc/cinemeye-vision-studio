@@ -17,6 +17,7 @@
   padding: 250px 24px;
   overflow: hidden;
   position: relative;
+  background-color: $bg-dark;
   @media screen and (max-width: $laptops) {
     grid-template-columns:
       1fr
@@ -56,7 +57,7 @@
     align-items: center;
     justify-content: flex-start;
     transition: all 0.3s ease-in-out;
-    perspective: 1000px;
+    // perspective: 1000px;
     z-index: 2;
     .plan_bg {
       width: 100%;
@@ -67,14 +68,47 @@
       overflow: hidden;
       border-radius: inherit;
       border: 2px solid transparent;
+      background: $black;
       transition: all 0.3s ease-in-out;
       pointer-events: none;
-      z-index: -1;
-      ///// ELEMENTS
+      user-select: none;
+      z-index: -5;
       &.popular {
         border-color: transparentize($blue, 0.5);
         box-shadow: 0 8px 8px transparentize($blue, 0.9),
           0 20px 20px transparentize($blue, 0.95);
+      }
+      &.select {
+        background-color: darken($black, 2);
+        border-color: transparent;
+        box-shadow: none;
+        transform: scale(1);
+        &::after {
+          background-color: transparentize($middle-grey, 0.95);
+        }
+        ~ .plan_btn {
+          color: $white;
+          background: lighten($black, 10);
+          box-shadow: none;
+          &:hover {
+            background: lighten($black, 5);
+          }
+        }
+      }
+      &::after {
+        content: '';
+        width: 33rem;
+        height: 30rem;
+        position: absolute;
+        top: -210px;
+        left: -30px;
+        border-radius: 50%;
+        background-color: transparentize($middle-grey, 0.9);
+        transition: all 0.3s ease-in-out;
+        @media screen and (max-width: $tablets) {
+          width: 34rem;
+          height: 30rem;
+        }
       }
     }
     &:nth-of-type(1) {
@@ -126,6 +160,7 @@
       letter-spacing: 2.5px;
       text-transform: uppercase;
       transform: translate(-50%, 0);
+      z-index: 5;
       &::after {
         content: 'most popular';
       }
@@ -134,25 +169,33 @@
       }
     }
     .plan_name {
+      position: relative;
+      color: $light-grey;
       font-size: 30px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 3.5px;
+      z-index: 5;
     }
     .plan_desc {
       width: 100%;
       overflow: hidden;
       margin: 20px 0 40px;
+      position: relative;
+      color: $regular-grey;
       font-size: 18px;
       font-weight: 400;
       text-align: center;
       text-overflow: ellipsis;
       white-space: nowrap;
+      z-index: 5;
     }
     .plan_price {
       position: relative;
+      color: $light-grey;
       font-size: 50px;
       font-weight: 700;
+      z-index: 5;
       .plan_from {
         position: absolute;
         top: -20px;
@@ -160,23 +203,8 @@
         font-size: 21px;
       }
     }
-    .plan_btn {
-      min-width: 220px;
+    .btn {
       margin: 50px 0;
-      padding: 13px 0;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid transparent;
-      font-size: 18px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-radius: 25px;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-      &:hover {
-        background: lighten($dark-blue, 5);
-      }
     }
     .plan_btn-mob {
       width: 180px;
@@ -185,6 +213,7 @@
       align-items: center;
       margin-bottom: 50px;
       position: relative;
+      color: $light-grey;
       font-size: 1rem;
       font-weight: bold;
       text-align: center;
@@ -192,24 +221,15 @@
       background-color: transparent;
       transition: all 0.3s ease-in-out;
       cursor: pointer;
-      // &::before {
-      //   content: '';
-      //   width: 50px;
-      //   height: 5px;
-      //   position: absolute;
-      //   top: 20px;
-      //   left: 20px;
-      //   border-radius: 5px;
-      //   background: $blue;
-      //   transition: all 0.3s ease-in-out;
-      //   transform: translate(0, 0);
-      // }
+      z-index: 5;
       .plan_btn-show {
         width: 30px;
         height: 30px;
         margin-right: 10px;
         position: relative;
         border-radius: 50%;
+        background-color: $dark-grey;
+        box-shadow: 0 8px 8px transparentize($bg-dark, 0);
         &::after,
         &::before {
           content: '';
@@ -219,6 +239,7 @@
           top: 50%;
           left: 50%;
           border-radius: 5px;
+          background-color: $light-grey;
           transition: all 0.3s ease-in-out;
         }
         &::after {
@@ -228,6 +249,7 @@
           transform: translate(-50%, -50%) rotate(90deg);
         }
         &.active {
+          box-shadow: 0 8px 8px transparentize($bg-dark, 1);
           &::after {
             transform: translate(-50%, -50%) rotate(45deg);
           }
@@ -236,13 +258,6 @@
           }
         }
       }
-
-      // &.active {
-      //   &::before {
-      //     transform: translate(82px, 0);
-      //     background: $magenta;
-      //   }
-      // }
       @media screen and (max-width: $tablets) {
         display: flex;
       }
@@ -256,8 +271,11 @@
       display: grid;
       grid-template-columns: 16px 1fr;
       gap: 15px;
+      position: relative;
       transition: all 0.3s ease-in-out;
       overflow: hidden;
+      color: $light-grey;
+      z-index: 5;
       p,
       pre {
         line-height: 130%;
@@ -323,147 +341,8 @@
       border-color: $magenta;
       box-shadow: 0 8px 8px transparentize($magenta, 0.9),
         0 20px 20px transparentize($magenta, 0.8);
-      transform: translate3d(0, 0, 30px);
+      transform: scale(1.02);
+      z-index: -1;
     }
-  }
-}
-
-/// DARK THEME
-.dark {
-  #plans {
-    background-color: $bg-dark;
-    .plan_bg {
-      background-color: $black;
-      &.select {
-        background-color: darken($black, 2);
-        border-color: transparent;
-        box-shadow: none;
-        transform: translate3d(0, 0, 0px);
-        &::after {
-          background-color: transparentize($middle-grey, 0.95);
-        }
-        ~ .plan_btn {
-          color: $white;
-          background: lighten($black, 10);
-          box-shadow: none;
-          &:hover {
-            background: lighten($black, 5);
-          }
-        }
-      }
-      &::after {
-        content: '';
-        width: 33rem;
-        height: 30rem;
-        position: absolute;
-        top: -210px;
-        left: -30px;
-        border-radius: 50%;
-        background-color: transparentize($middle-grey, 0.9);
-        transition: all 0.3s ease-in-out;
-        @media screen and (max-width: $tablets) {
-          width: 34rem;
-          height: 30rem;
-        }
-      }
-    }
-  }
-  .plan_name {
-    color: $light-grey;
-  }
-  .plan_desc {
-    color: $regular-grey;
-  }
-  .plan_price {
-    color: $light-grey;
-  }
-  .plan_btn {
-    color: $white;
-    background: $dark-blue;
-    box-shadow: 0 5px 5px transparentize($dark-blue, 0.8),
-      0 15px 15px transparentize($dark-blue, 0.9);
-  }
-  .plan_btn-mob {
-    color: $light-grey;
-    .plan_btn-show {
-      background-color: $dark-grey;
-      box-shadow: 0 8px 8px transparentize($bg-dark, 0);
-      &::after,
-      &::before {
-        background-color: $light-grey;
-      }
-      &.active {
-        box-shadow: 0 8px 8px transparentize($bg-dark, 1);
-      }
-    }
-  }
-  .plan_features {
-    color: $light-grey;
-  }
-}
-/// LIGHT THEME
-.light {
-  #plans {
-    background-color: $bg-light;
-    .plan_bg {
-      background-color: $white;
-      box-shadow: 0 20px 20px transparentize($blue, 0.95),
-        0 8px 8px transparentize($blue, 0.85);
-      @media screen and (max-width: $phones) {
-        box-shadow: 0 20px 20px transparentize($blue, 0.95),
-          0 -3px 8px transparentize($blue, 0.9),
-          0 8px 8px transparentize($blue, 0.85);
-      }
-      &.select {
-        background-color: darken($white, 1);
-        border-color: transparent;
-        box-shadow: inset 0px 10px 20px rgba($black, 0.05),
-          inset 0px 2px 3px rgba($black, 0.25);
-        transform: translate3d(0, 0, 0px);
-        ~ .plan_btn {
-          color: $black;
-          background: darken($white, 5);
-          box-shadow: none;
-          &:hover {
-            background: darken($white, 10);
-          }
-        }
-      }
-    }
-  }
-  .plan_name {
-    color: $dark-grey;
-  }
-  .plan_desc {
-    color: $middle-grey;
-  }
-  .plan_price {
-    color: $dark-grey;
-  }
-  .plan_btn {
-    color: $white;
-    background: $dark-blue;
-    box-shadow: 0 5px 5px transparentize($dark-blue, 0.8),
-      0 15px 15px transparentize($dark-blue, 0.9);
-  }
-  .plan_btn-mob {
-    color: $middle-grey;
-    .plan_btn-show {
-      background-color: darken($white, 4);
-      box-shadow: 0 8px 8px transparentize($blue, 0.85);
-      &::after,
-      &::before {
-        background-color: $dark-grey;
-      }
-      &.active {
-        box-shadow: 0 8px 8px transparentize($bg-dark, 1);
-      }
-    }
-  }
-  .plan_features {
-    color: $dark-grey;
-  }
-  .plan:hover .plan_btn-show {
-    box-shadow: 0 8px 8px transparentize($magenta, 0.85);
   }
 }

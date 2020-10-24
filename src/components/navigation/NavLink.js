@@ -1,22 +1,18 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
+// Context
+import { useStore } from '../store/Store';
+
 const NavLink = ({ link, children }) => {
-  // const isActive = ({ location }) => {
-  //   if (location.hash === '') location.hash = '#intro';
-
-  //   return location.hash === `${link}`
-  //     ? { className: 'nav-link act-link' }
-  //     : { className: 'nav-link' };
-  // };
-
-  // return (
-  //   <Link getProps={isActive} to={`/${link}`}>
-  //     {children}
-  //   </Link>
-  // );
+  // Получаем глобальные переменные
+  const { menuHandler } = useStore();
   return (
-    <Link className="nav-link" to={`/${link}`}>
+    <Link
+      className="nav-link"
+      to={`/${link}`}
+      onKeyDown={() => menuHandler({ active: false })}
+      onClick={() => menuHandler({ active: false })}>
       {children}
     </Link>
   );

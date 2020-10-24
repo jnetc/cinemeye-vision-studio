@@ -22,6 +22,14 @@
     height: 80vh;
   }
 }
+
+#modal-plan {
+  background: transparentize($black, 0.2);
+}
+#nav-mob-menu {
+  background: transparentize($black, 0.08);
+}
+
 #modal,
 #nav-mob-menu {
   justify-content: center;
@@ -86,38 +94,4 @@
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-}
-
-.light {
-  #modal-plan {
-    background: transparentize($white, 0.2);
-  }
-  #nav-mob-menu {
-    background: transparentize($white, 0.05);
-    & span#close {
-      &::after {
-        background-color: $dark-grey;
-      }
-      &::before {
-        background-color: $dark-grey;
-      }
-      &:hover {
-        &::after {
-          background-color: $black;
-        }
-        &::before {
-          background-color: $black;
-        }
-      }
-    }
-  }
-}
-
-.dark {
-  #modal-plan {
-    background: transparentize($black, 0.2);
-  }
-  #nav-mob-menu {
-    background: transparentize($black, 0.08);
-  }
 }

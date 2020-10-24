@@ -115,7 +115,7 @@ const Meetform = () => {
       {!status.info.error && status.info.msg && (
         <div className="success">{status.info.msg}</div>
       )}
-      <button type="submit" className="form_btn" disabled={status.submitting}>
+      <button type="submit" className="btn" disabled={status.submitting}>
         {!status.submitting
           ? !status.submitted
             ? context?.submit.split(',')[0]

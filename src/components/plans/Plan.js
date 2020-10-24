@@ -46,6 +46,26 @@ const Plan = ({ context }) => {
   return (
     <div className="plan">
       {popular ? <div id="plan_pop"></div> : null}
+
+      <div className="plan_name">{name}</div>
+      <div className="plan_desc">{desc}</div>
+      <div className="plan_price">
+        {price}€{from && <div className="plan_from">{from}</div>}
+      </div>
+      <button
+        type="button"
+        className="btn"
+        onClick={() => selectHandler(refSelect)}>
+        {selected ? 'selected' : service1 ? 'select' : `let's talk`}
+      </button>
+      <button
+        type="button"
+        className={features ? 'plan_btn-mob active' : 'plan_btn-mob'}
+        onClick={() => featureToggle()}>
+        <div className={features ? 'plan_btn-show active' : 'plan_btn-show'} />
+        {features ? 'hide features' : 'show features'}
+      </button>
+      <Feautures data={feauters} toggle={features} />
       <div
         ref={refSelect}
         className={`${
@@ -58,25 +78,6 @@ const Plan = ({ context }) => {
             : `plan_bg ${name.toLowerCase()}`
         }`}
       />
-      <div className="plan_name">{name}</div>
-      <div className="plan_desc">{desc}</div>
-      <div className="plan_price">
-        {price}€{from && <div className="plan_from">{from}</div>}
-      </div>
-      <button
-        type="button"
-        className="plan_btn"
-        onClick={() => selectHandler(refSelect)}>
-        {selected ? 'selected' : service1 ? 'select' : `let's talk`}
-      </button>
-      <button
-        type="button"
-        className={features ? 'plan_btn-mob active' : 'plan_btn-mob'}
-        onClick={() => featureToggle()}>
-        <div className={features ? 'plan_btn-show active' : 'plan_btn-show'} />
-        {features ? 'hide features' : 'show features'}
-      </button>
-      <Feautures data={feauters} toggle={features} />
     </div>
   );
 };

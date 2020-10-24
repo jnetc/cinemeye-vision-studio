@@ -36,7 +36,6 @@ const IndexPage = () => {
     <>
       <SEO
         lang={data?.lang}
-        theme={data?.theme}
         modal={data?.modal.active}
         menu={data?.menu.active}
         select={data?.select.action}

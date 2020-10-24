@@ -17,7 +17,6 @@ const Image = () => {
       file(relativePath: { eq: "bg/bg-intro.jpg" }) {
         childImageSharp {
           fluid(
-            fit: COVER
             quality: 75
             background: "#000"
             sizes: "(max-width: 3840px) calc(100vw - 40px), 3840px"

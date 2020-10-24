@@ -193,12 +193,19 @@ header {
         margin: 20px 0;
         a.nav-link {
           padding: 12px;
+          color: $white;
           font-size: 2rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
           border: 2px solid transparent;
           transition: all 0.3s ease-in-out;
           cursor: pointer;
+          &:hover {
+            border-color: $white;
+          }
+          &.act-link {
+            border-color: $white;
+          }
         }
       }
     }
@@ -206,38 +213,6 @@ header {
   @media screen and (max-width: $phones) {
     ul li a.nav-link {
       font-size: 1.5rem;
-    }
-  }
-}
-
-.light {
-  #nav-mob-menu {
-    ul li {
-      .nav-link {
-        color: $black;
-        &:hover {
-          border-color: $black;
-        }
-        &.act-link {
-          border-color: $black;
-        }
-      }
-    }
-  }
-}
-
-.dark {
-  #nav-mob-menu {
-    ul li {
-      .nav-link {
-        color: $white;
-        &:hover {
-          border-color: $white;
-        }
-        &.act-link {
-          border-color: $white;
-        }
-      }
     }
   }
 }

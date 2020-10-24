@@ -9,6 +9,7 @@
   justify-content: center;
   padding: 100px 24px;
   position: relative;
+  background-color: $bg-dark;
   @media screen and (min-width: $special) {
     grid-template-columns: 1fr 696px 696px 1fr;
     grid-template-rows: 1fr 200px 1fr;
@@ -54,6 +55,7 @@
     padding: 40px 45px;
     position: relative;
     border-radius: 20px;
+    background-color: $black;
     cursor: grab;
     @media screen and (max-width: $tablets) {
       grid-template-columns: 1fr;
@@ -67,7 +69,7 @@
       height: 200px;
       align-self: center;
       border-radius: 50%;
-      border: 10px solid transparent;
+      border: 10px solid $dark-blue;
       object-fit: cover;
       @media screen and (max-width: $tablets) {
         justify-self: center;
@@ -83,7 +85,7 @@
       }
       h3 {
         font-size: 20px;
-        color: $black;
+        color: $light-grey;
         @media screen and (max-width: $tablets) {
           text-align: center;
         }
@@ -91,13 +93,13 @@
       span {
         margin: 13px 0 20px;
         font-size: 14px;
-        color: $middle-grey;
+        color: $regular-grey;
         @media screen and (max-width: $tablets) {
           text-align: center;
         }
       }
       p {
-        color: $black;
+        color: $light-grey;
         letter-spacing: 0.05rem;
       }
     }
@@ -131,6 +133,7 @@
     height: 12px;
     margin: 0 5px;
     border-radius: 100%;
+    background: $dark-blue;
     opacity: 0.3;
     transition: 0.5s opacity;
     cursor: pointer;
@@ -142,6 +145,7 @@
     grid-column: 2/-2;
     grid-row: 2;
     margin: 70px 0;
+    color: $light-grey;
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
@@ -162,6 +166,7 @@
     align-items: center;
     align-self: center;
     padding: 15px;
+    color: $light-grey;
     white-space: pre-wrap;
     letter-spacing: 0.05rem;
     @media screen and (max-width: $special) {
@@ -171,60 +176,6 @@
     }
     @media screen and (max-width: $phones) {
       padding: 55px 0;
-    }
-  }
-}
-
-.dark {
-  #meetus {
-    background-color: $bg-dark;
-    .swiper-slide {
-      background-color: $black;
-      .gatsby-image-wrapper {
-        border-color: $dark-blue;
-      }
-      .worker-info {
-        h3 {
-          color: $light-grey;
-        }
-        span {
-          color: $regular-grey;
-        }
-        p {
-          color: $light-grey;
-        }
-      }
-    }
-    .swiper-pagination-bullet {
-      background: $dark-blue;
-    }
-    #meetus-title {
-      color: $light-grey;
-    }
-    #meetus-info {
-      color: $light-grey;
-    }
-  }
-}
-.light {
-  #meetus {
-    background-color: $bg-light;
-    .swiper-slide {
-      background-color: $white;
-      box-shadow: 0 8px 8px transparentize($blue, 0.9),
-        0 20px 20px transparentize($blue, 0.95);
-      .gatsby-image-wrapper {
-        border-color: lighten($blue, 37);
-      }
-    }
-    .swiper-pagination-bullet {
-      background: $blue;
-    }
-    #meetus-title {
-      color: $dark-grey;
-    }
-    #meetus-info {
-      color: $dark-grey;
     }
   }
 }

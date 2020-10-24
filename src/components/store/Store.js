@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { themeHandler } from '../../utils/sunrise';
 import language from '../../utils/user-lang';
 
 // Параметры состояния по умолчанию
 const state = {
   lang: 'fi',
-  theme: 'dark',
   modal: { active: false },
   menu: { active: false },
   select: { plan: '', action: false },
@@ -23,7 +21,6 @@ export const Store = ({ children }) => {
   const [lang, setLang] = useState('');
   const [modal, setModal] = useState(state.modal);
   const [menu, setMenu] = useState(state.menu);
-  const [theme, setTheme] = useState(state.theme);
   const [select, setSelect] = useState(state.select);
 
   // Plan selection
@@ -45,7 +42,6 @@ export const Store = ({ children }) => {
 
   useEffect(() => {
     // Определяем цветовую тему
-    themeHandler().then(data => setTheme(data));
     // Определение языка
     const userLang = window.navigator.language;
     let langLS = localStorage.getItem('lang');
@@ -72,7 +68,6 @@ export const Store = ({ children }) => {
       value={{
         lang,
         langHandler: value => setLang(value),
-        theme,
         modal,
         modalHandler: obj => setModal(obj),
         menu,

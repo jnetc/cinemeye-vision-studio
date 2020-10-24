@@ -13,14 +13,12 @@ const Skills = ({ skills }) => {
       setMove(movement);
     });
   }, [move]);
-  console.log(move / 100);
 
   return (
     <div
       id="skills"
       style={{
         transform: `rotate(-90deg) translate3d(${move}px, 0, 0)`,
-        opacity: `${move / 100 >= 1 ? 1 : move / 100}`,
       }}>
       {services}
     </div>
