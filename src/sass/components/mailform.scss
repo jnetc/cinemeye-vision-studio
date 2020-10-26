@@ -126,10 +126,10 @@ form {
   margin: 24px auto 0;
 }
 .success {
-  color: #90f190;
+  color: $green;
 }
 .error {
-  color: #f19090;
+  color: $red;
 }
 .success,
 .error {

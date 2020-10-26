@@ -12,15 +12,7 @@ import Meetus from '../components/meetus/Meetus';
 import Credits from '../components/credits/Credits';
 import Youtube from '../components/modals/Youtube';
 import Mailform from '../components/modals/Mailform';
-
-// const Intro = lazy(() => import('../components/intro'));
-// const Header = lazy(() => import('../components/header'));
-// const Values = lazy(() => import('../components/values/Values'));
-// const Plans = lazy(() => import('../components/plans/Plans'));
-// const Meetus = lazy(() => import('../components/meetus/Meetus'));
-// const Credits = lazy(() => import('../components/credits/Credits'));
-// const Youtube = lazy(() => import('../components/modals/Youtube'));
-// const Mailform = lazy(() => import('../components/modals/Mailform'));
+import MobContact from '../components/mob-contact/MobContact';
 
 const IndexPage = () => {
   const data = useStore();
@@ -49,6 +41,7 @@ const IndexPage = () => {
       <Plans />
       <Meetus />
       <Credits />
+      <MobContact />
     </>
   );
 };

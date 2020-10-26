@@ -1,0 +1,131 @@
+@import '../colors.scss';
+@import '../sizes.scss';
+
+.boxes {
+  width: 70px;
+  height: 80px;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+  overflow: hidden;
+  filter: url('#filter');
+  z-index: 100;
+  transition: all 1s linear;
+  transition-delay: 0.5s;
+  @media screen and (max-width: $phones) {
+    display: block;
+  }
+  @media screen and (orientation: landscape) and (max-device-width: $tablets) {
+    display: block;
+  }
+  &.action {
+    height: 340px;
+    transition-delay: 0s;
+  }
+}
+svg#svg {
+  display: none;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  box-shadow: 0 8px 8px rgba(black, 0.5);
+  svg {
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    fill: $white;
+  }
+}
+#info {
+  background: $dark-blue;
+  transition: all 1s linear;
+  // box-shadow: 0px 8px 8px rgba(rgb(8, 42, 56), 0.3);
+  transform: translate(-50%, 0px) scale(1.2);
+  z-index: 50;
+  &::after {
+    content: '';
+    width: 4px;
+    height: 25px;
+    position: absolute;
+    top: 13px;
+    left: 23px;
+    border-radius: 10px;
+    background-color: $white;
+    transition: all 0.3s ease-in-out;
+    transform: rotate(45deg) scale(0);
+  }
+  &::before {
+    content: '';
+    width: 4px;
+    height: 25px;
+    position: absolute;
+    top: 13px;
+    left: 23px;
+    border-radius: 10px;
+    background-color: $white;
+    transition: all 0.3s ease-in-out;
+    transform: rotate(-45deg) scale(0);
+  }
+  &.action {
+    background: $dark-grey;
+    box-shadow: 0px 0px 8px rgba(rgb(8, 42, 56), 0);
+    transform: translate(-50%, 00px) scale(1);
+    &::after {
+      transform: rotate(45deg) scale(1);
+    }
+    &::before {
+      transform: rotate(-45deg) scale(1);
+    }
+    svg {
+      transform: scale(0);
+    }
+  }
+  &.action ~ #phone {
+    transform: translate(-50%, -80px) scale(1.3);
+    box-shadow: 0px 0px 8px rgba(rgb(8, 42, 56), 0.5);
+  }
+  &.action ~ #email {
+    transform: translate(-50%, -170px) scale(1.3);
+    box-shadow: 0px 0px 8px rgba(rgb(8, 42, 56), 0.5);
+    transition-delay: 0.2s;
+  }
+  &.action ~ #wapp {
+    transform: translate(-50%, -260px) scale(1.3);
+    box-shadow: 0px 0px 8px rgba(rgb(8, 42, 56), 0.5);
+    transition-delay: 0.4s;
+  }
+}
+#phone {
+  background: $blue;
+  transition: all 0.4s cubic-bezier(0.42, -0.06, 0.56, 0.01);
+  z-index: 40;
+}
+#email {
+  background: $red;
+  transition: all 0.6s cubic-bezier(0.42, -0.06, 0.56, 0.01);
+  z-index: 39;
+}
+#wapp {
+  background: $green;
+  transition: all 0.8s cubic-bezier(0.42, -0.06, 0.56, 0.01);
+  z-index: 38;
+}
+
+#phone,
+#email,
+#wapp {
+  transform: translate(-50%, 0px) scale(0.5);
+  box-shadow: 0px 8px 8px rgba(rgb(8, 42, 56), 1);
+  svg {
+    transform: scale(0.8);
+  }
+}
