@@ -5,6 +5,7 @@
   width: 70px;
   height: 80px;
   display: none;
+  display: block;
   position: fixed;
   bottom: 0;
   right: 10px;
@@ -25,7 +26,13 @@
   }
 }
 svg#svg {
-  display: none;
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  visibility: hidden;
+  left: -100px;
+  bottom: 0;
+  z-index: -100;
 }
 
 .box {
