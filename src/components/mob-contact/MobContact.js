@@ -41,6 +41,7 @@ const MobContact = () => {
           onClick={toggle}>
           <InfoIcon />
         </div>
+        <div className="box" id="info-anim" />
         <a href={`tel:${context?.phone}`} className="box" id="phone">
           <span>Phone number</span>
           <PhoneIcon />

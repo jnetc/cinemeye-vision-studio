@@ -11,10 +11,31 @@
   line-height: 1;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-family: 'Roboto', sans-serif;
+::selection {
+  background-color: $blue;
 }
+// CHROME SCROLL PROPERTY
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: $middle-grey;
+}
+::-webkit-scrollbar-thumb {
+  background: $light-grey;
+  border-right: 1px solid $middle-grey;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  // SCROLL ANIMATION PROPERTY
+  scroll-behavior: smooth;
+  // FIREFOX SCROLL PROPERTY
+  // thumb and track color
+  scrollbar-color: $light-grey $middle-grey;
+  scrollbar-width: thin;
+}
+
 html,
 body,
 #___gatsby,
@@ -55,10 +76,6 @@ textarea {
   font-size: 1rem;
   font-weight: 400;
   line-height: 21px;
-}
-
-::selection {
-  background-color: $blue;
 }
 
 #gatsby-focus-wrapper {

@@ -31,12 +31,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      background: linear-gradient(
-        to top,
-        black 0%,
-        black 50%,
-        rgba(0, 0, 0, 0) 100%
-      );
+      background: linear-gradient(to top, black 0%, rgba(0, 0, 0, 0) 100%);
       z-index: 1;
     }
   }
@@ -48,6 +43,18 @@
   @media screen and (orientation: landscape) and (max-device-width: $tablets) {
     grid-template-columns: 1fr 110px 1fr;
     grid-template-rows: 70px 1fr 70px;
+    .gatsby-image-wrapper {
+      &::before {
+        height: 100px;
+      }
+    }
+  }
+  @media screen and (max-width: $phones) {
+    .gatsby-image-wrapper {
+      &::before {
+        height: 100px;
+      }
+    }
   }
 
   // Context
