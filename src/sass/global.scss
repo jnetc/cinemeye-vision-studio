@@ -20,6 +20,7 @@ body,
 #___gatsby,
 #gatsby-focus-wrapper {
   height: 100%;
+  text-rendering: optimizeSpeed;
 }
 
 ul {

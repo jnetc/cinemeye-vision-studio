@@ -34,6 +34,7 @@ const MobContact = () => {
         <div
           id="info"
           role="button"
+          aria-label="button"
           tabIndex={0}
           className={action ? 'box action' : 'box'}
           onKeyPress={toggle}
@@ -41,12 +42,15 @@ const MobContact = () => {
           <InfoIcon />
         </div>
         <a href={`tel:${context?.phone}`} className="box" id="phone">
+          <span>Phone number</span>
           <PhoneIcon />
         </a>
         <a href={`mailto:${context?.email}`} className="box" id="email">
+          <span>Email</span>
           <EmailIcon />
         </a>
         <a href={`${context?.whatsapp}`} className="box" id="wapp">
+          <span>Whatapp</span>
           <WappIcon />
         </a>
       </div>
