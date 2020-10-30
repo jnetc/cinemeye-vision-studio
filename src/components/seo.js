@@ -26,8 +26,6 @@ function SEO({ meta, lang, modal, select, menu }) {
   return (
     <Helmet>
       <html lang={lang} amp />
-      <body className={active ? `modal-show` : ''} />
-      <title>{context?.siteName}</title>
       {/* Primary Meta Tags */}
       <meta
         name="viewport"
@@ -63,6 +61,8 @@ function SEO({ meta, lang, modal, select, menu }) {
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
         as="style"
         type="text/css"></link>
+      <title>{context?.siteName}</title>
+      <body className={active ? `modal-show` : ''} />
     </Helmet>
   );
 }

@@ -67,10 +67,10 @@
     .gatsby-image-wrapper {
       width: 200px;
       height: 200px;
+      display: block;
       align-self: center;
       border-radius: 50%;
       border: 10px solid $dark-blue;
-      object-fit: cover;
       @media screen and (max-width: $tablets) {
         justify-self: center;
       }

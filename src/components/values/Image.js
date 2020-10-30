@@ -19,7 +19,7 @@ const Image = () => {
           fluid(
             quality: 75
             background: "#000"
-            sizes: "(max-width: 3840px) calc(100vw - 40px), 3840px"
+            sizes: "(max-width: 3840px) 100vw, (max-width: 460px) 100vw, 460px"
           ) {
             ...GatsbyImageSharpFluid_withWebp
           }
