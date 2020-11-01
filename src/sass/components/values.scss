@@ -19,7 +19,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: transparentize(black, 0.25);
+      background-color: transparentize(black, 0.5);
     }
   }
 
@@ -115,10 +115,12 @@
     flex-direction: column;
     color: $white;
     h2 {
+      font-size: 4rem;
       padding-bottom: 24px;
     }
     pre {
       white-space: pre-wrap;
+      font-size: 1.2rem;
       line-height: 25px;
       font-weight: 300;
       letter-spacing: 0.1em;
@@ -130,6 +132,20 @@
       grid-column: 2/3;
       grid-row: 1/2;
       margin-bottom: 150px;
+      h2 {
+        font-size: 3rem;
+      }
+      pre {
+        font-size: 1.1rem;
+      }
+    }
+    @media screen and (max-width: $phones) {
+      h2 {
+        font-size: 2rem;
+      }
+      pre {
+        font-size: 1rem;
+      }
     }
   }
 }

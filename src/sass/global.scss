@@ -57,16 +57,7 @@ h1,
 h2 {
   text-transform: uppercase;
 }
-h1 {
-  font-weight: bold;
-  font-size: 4rem;
-  color: $white;
-  @media screen and (max-width: $tablets) {
-    font-size: 3.2rem;
-  }
-}
 h2 {
-  font-size: 2rem;
   letter-spacing: 0.15em;
 }
 p,
@@ -110,7 +101,7 @@ button.play-btn {
   border: 2px solid $light-grey;
   border-radius: 50%;
   background-color: transparentize(black, 0.75);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s cubic-bezier(0, 1.85, 0.58, 1);
   transform: translate3d(0, 0, 0);
   cursor: pointer;
   &::before {

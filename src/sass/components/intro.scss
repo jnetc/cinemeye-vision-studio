@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr minmax(300px, 500px) 150px minmax(300px, 500px) 1fr;
+  grid-template-columns: 1fr minmax(300px, 600px) 150px minmax(300px, 600px) 1fr;
   grid-template-rows: 1fr repeat(2, 150px) 1fr;
   gap: 0px;
   align-items: center;
@@ -78,12 +78,26 @@
       grid-row: 2;
     }
   }
+  h1 {
+    font-weight: bold;
+    font-size: 6rem;
+    color: $white;
+
+    @media screen and (max-width: $laptops) {
+      font-size: 4.3rem;
+    }
+    @media screen and (max-width: $tablets) {
+      font-size: 4.5rem;
+    }
+    @media screen and (max-width: $phones) {
+      font-size: 3.2rem;
+    }
+  }
   h2 {
     padding: 15px 0 0;
     color: $regular-grey;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 400;
-    letter-spacing: 0.15em;
     line-height: 1.5;
     @media screen and (max-width: $tablets) {
       font-size: 1rem;
