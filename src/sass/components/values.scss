@@ -19,15 +19,27 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: transparentize(black, 0.5);
+      background-color: transparentize(black, 0.45);
+    }
+    @media screen and (max-width: $phones) {
+      picture {
+        img {
+          object-fit: cover !important;
+          object-position: 30% center !important;
+        }
+      }
     }
   }
 
   @media screen and (min-width: $special) {
-    height: 100vh;
+    // height: 100vh;
     grid-template-columns:
       1fr minmax(100px, 350px) minmax(300px, 500px) 150px minmax(300px, 500px)
       minmax(100px, 350px) 1fr;
+    padding: 200px 15px;
+  }
+  @media screen and (min-width: $regular-monitor) {
+    height: 100vh;
   }
   @media screen and (max-width: $tablets) {
     grid-template-columns: 1fr minmax(290px, 500px) 1fr;

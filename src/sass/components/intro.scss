@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr minmax(300px, 600px) 150px minmax(300px, 600px) 1fr;
+  grid-template-columns: 1fr minmax(300px, 500px) 150px minmax(300px, 500px) 1fr;
   grid-template-rows: 1fr repeat(2, 150px) 1fr;
   gap: 0px;
   align-items: center;
@@ -22,7 +22,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: transparentize(black, 0.4);
+      background-color: transparentize(black, 0.45);
     }
     &::before {
       content: '';
@@ -33,6 +33,14 @@
       left: 0;
       background: linear-gradient(to top, black 0%, rgba(0, 0, 0, 0) 100%);
       z-index: 1;
+    }
+    @media screen and (max-width: $phones) {
+      picture {
+        img {
+          object-fit: cover !important;
+          object-position: 80% center !important;
+        }
+      }
     }
   }
 
@@ -80,7 +88,7 @@
   }
   h1 {
     font-weight: bold;
-    font-size: 6rem;
+    font-size: 5rem;
     color: $white;
 
     @media screen and (max-width: $laptops) {

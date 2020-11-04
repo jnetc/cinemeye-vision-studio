@@ -11,6 +11,7 @@ const NavLink = ({ link, children }) => {
     <Link
       className="nav-link"
       to={`/${link}`}
+      replace
       onKeyDown={() => menuHandler({ active: false })}
       onClick={() => menuHandler({ active: false })}>
       {children}
