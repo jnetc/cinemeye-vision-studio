@@ -119,7 +119,7 @@ svg#svg {
 }
 #info-anim {
   background: $dark-blue;
-  animation: info 3s ease-in-out infinite;
+  animation: info 6s ease-in-out infinite;
   transform: translate(-50%, 0px) scale(0.5);
   z-index: 37;
 }
@@ -150,7 +150,11 @@ svg#svg {
 }
 
 @keyframes info {
-  0% {
+  49% {
+    transform: translate(-50%, 0px) scale(1);
+    opacity: 0;
+  }
+  50% {
     transform: translate(-50%, 0px) scale(1);
     opacity: 1;
   }

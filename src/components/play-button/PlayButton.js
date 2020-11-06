@@ -20,6 +20,7 @@ const PlayButton = ({ link }) => {
         })
       }>
       <PlayButtonIcon />
+      <div className="puls" />
     </button>
   );
 };
