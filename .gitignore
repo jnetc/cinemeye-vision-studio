@@ -71,6 +71,5 @@ yarn-error.log
 # Local Netlify folder
 .netlify
 
-# Figma file
-figma
-*.fig
+# Source
+source
