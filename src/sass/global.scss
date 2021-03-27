@@ -25,6 +25,9 @@
   background: $light-grey;
   border-right: 1px solid $middle-grey;
 }
+::placeholder {
+  color: $middle-grey;
+}
 
 html {
   font-family: 'Roboto', sans-serif;
