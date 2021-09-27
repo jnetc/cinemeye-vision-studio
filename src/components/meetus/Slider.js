@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 // Import Swiper React components
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+// swiper core styles
+import 'swiper/css';
+
+// modules styles
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 // Context
 import { useStore } from '../store/Store';
 import { localeHandler } from '../store/remapQueries';
@@ -17,7 +24,6 @@ const Slider = () => {
   const { lang } = useStore();
   // Трансформация данных
   const data = localeHandler(query, lang);
-  // console.log(data);
 
   const [winSize, setwinSize] = useState(0);
   useEffect(() => {
@@ -33,7 +39,7 @@ const Slider = () => {
     return (
       <SwiperSlide className="worker" key={s.name}>
         {s.new && <span className="worker-new">new</span>}
-        <Img fluid={s.foto.fluid} />
+        <GatsbyImage image={s.foto.gatsbyImageData} alt={s.name} />
         <div className="worker-info">
           <h3>{s.name}</h3>
           <span>{s.skill}</span>
@@ -50,7 +56,8 @@ const Slider = () => {
         slidesPerView={winSize}
         loop={true}
         autoplay={{ delay: 3000 }}
-        pagination={{ clickable: true }}>
+        pagination={{ clickable: true }}
+      >
         {slides}
       </Swiper>
     </>
@@ -71,13 +78,7 @@ const ctx = graphql`
           about
           new
           foto {
-            fluid(
-              maxWidth: 250
-              forceBlurhash: false
-              imgixParams: { fm: "jpg", auto: "compress" }
-            ) {
-              ...GatsbyDatoCmsFluid
-            }
+            gatsbyImageData
           }
         }
       }

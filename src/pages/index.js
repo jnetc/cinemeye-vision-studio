@@ -1,6 +1,6 @@
 import React from 'react';
 // SEO Component
-import SEO from '../components/seo';
+import Seo from '../components/seo';
 import { useStore } from '../components/store/Store';
 
 // Components
@@ -26,7 +26,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <SEO
+      <Seo
         lang={data?.lang}
         modal={data?.modal.active}
         menu={data?.menu.active}

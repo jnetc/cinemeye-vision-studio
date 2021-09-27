@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import { graphql, useStaticQuery } from 'gatsby';
 // Styles
@@ -29,6 +29,18 @@ const Mailform = () => {
     tel: '',
     message: '',
   });
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const clickOutModal = ev => {
+      ev.preventDefault();
+      if (ev.target.id !== 'modal-plan') return;
+      selectHandler({ action: false });
+    };
+
+    ref.current.addEventListener('click', clickOutModal);
+  }, [selectHandler]);
 
   const handleResponse = status => {
     if (status === 200) {
@@ -77,11 +89,10 @@ const Mailform = () => {
       process.env.GATSBY_EMAILJS_USER_ID
     );
     handleResponse(res.status);
-    console.log(res.status, res.text);
   };
 
   return (
-    <template id="modal-plan" className={select.action ? 'show' : ''}>
+    <template id="modal-plan" className={select.action ? 'show' : ''} ref={ref}>
       <section className="plan-form">
         <button
           id="modal-plan-close"

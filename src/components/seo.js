@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 // Context
 import { localeHandler } from './store/remapQueries';
 
-function SEO({ meta, lang, modal, select, menu }) {
+function Seo({ meta, lang, modal, select, menu }) {
   // Получаем данные с CMS
   const query = useStaticQuery(ctx);
   // Трансформация данных
@@ -60,14 +60,15 @@ function SEO({ meta, lang, modal, select, menu }) {
         rel="stylesheet preload prefetch preconnect dns-prefetch"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
         as="style"
-        type="text/css"></link>
+        type="text/css"
+      ></link>
       <title>{context?.siteName}</title>
       <body className={active ? `modal-show` : ''} />
     </Helmet>
   );
 }
 
-export default SEO;
+export default Seo;
 
 // GrapQL запрос
 const ctx = graphql`

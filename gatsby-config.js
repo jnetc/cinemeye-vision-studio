@@ -9,11 +9,25 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`, `avif`],
+          placeholder: `blurred`,
+          quality: 75,
+          breakpoints: [480, 768, 1200, 1920, 3840],
+          // sizes:
+          //   '(max-width: 480px) 480px, 100vw, (max-width:768px) 768px, 100vw, (max-width: 1200px) 1200px, 100vw (max-width: 1920px) 1920px, 100vw, (min-width: 3840px) 3840w, 100vw',
+          backgroundColor: `transparent`,
+        },
+      },
+    },
+    `gatsby-transformer-sharp`, // Needed for dynamic images
     `gatsby-plugin-playground`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

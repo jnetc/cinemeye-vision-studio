@@ -73,7 +73,6 @@ const Meetform = () => {
       process.env.GATSBY_EMAILJS_USER_ID
     );
     handleResponse(res.status);
-    console.log(res.status, res.text);
   };
 
   return (

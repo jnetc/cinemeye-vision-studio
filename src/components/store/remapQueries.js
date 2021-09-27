@@ -76,6 +76,5 @@ export const localeHandler = (context, lang) => {
       obj = { ...node };
     }
   }
-  // console.log(obj);
   return obj;
 };

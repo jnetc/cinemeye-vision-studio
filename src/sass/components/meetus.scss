@@ -10,6 +10,7 @@
   padding: 100px 24px;
   position: relative;
   background-color: $bg-dark;
+  overflow: hidden;
   @media screen and (min-width: $special) {
     grid-template-columns: 1fr 696px 696px 1fr;
     grid-template-rows: 1fr 200px 1fr;
@@ -28,7 +29,7 @@
     grid-template-columns: 1fr minmax(290px, 500px) 1fr;
     padding: 100px 15px 70px;
   }
-  .swiper-container {
+  .swiper {
     width: 100%;
     grid-column: 2 / -2;
     grid-row: 1;
@@ -119,15 +120,6 @@
     }
   }
   // PAGINATION STYLE
-  .swiper-pagination {
-    display: flex;
-    position: absolute;
-    left: 50%;
-    bottom: 10px;
-    transition: 300ms opacity;
-    transform: translateX(-50%);
-    z-index: 10;
-  }
   .swiper-pagination-bullet {
     width: 12px;
     height: 12px;

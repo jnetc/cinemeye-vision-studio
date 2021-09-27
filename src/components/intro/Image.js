@@ -1,39 +1,27 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
-
-// Фрагмент       ...GatsbyImageSharpFluid
-// Значения       aspectRatioб base64 sizes src
-// ДРУГИЕ ФРАГМЕНТЫ
-// https://www.gatsbyjs.com/docs/gatsby-image/#common-fragments-with-gatsby-transformer-sharp
-
-//                 ВНИМАНИЕ!!!
-// Это значение по умолчанию без которых будет выдавать ошибку
-// Остально добавляем по надобности опционально
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const Image = () => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "bg/bg-intro.jpg" }) {
         childImageSharp {
-          fluid(
-            quality: 75
-            background: "#000"
-            sizes: "(max-width: 3840px) 100vw, (max-width: 460px) 100vw, 460px"
-          ) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData
         }
       }
     }
   `);
-  if (!data?.file?.childImageSharp?.fluid) {
+
+  if (!data?.file?.childImageSharp?.gatsbyImageData) {
     return <div>Picture not found</div>;
   }
+
   return (
-    <Img
-      fluid={data.file.childImageSharp.fluid}
+    <GatsbyImage
+      image={data.file.childImageSharp.gatsbyImageData}
       style={{ position: 'absolute' }}
+      alt={'alt'}
     />
   );
 };
