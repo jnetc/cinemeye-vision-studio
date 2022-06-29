@@ -5,7 +5,7 @@
   display: grid;
   gap: 24px;
   grid-template-columns: 1fr minmax(500px, 780px) 1fr;
-  grid-template-rows: 1fr 200px 1fr 1fr;
+  grid-template-rows: 1fr 100px auto;
   justify-content: center;
   padding: 100px 24px;
   position: relative;
@@ -13,17 +13,13 @@
   overflow: hidden;
   @media screen and (min-width: $special) {
     grid-template-columns: 1fr 696px 696px 1fr;
-    grid-template-rows: 1fr 200px 1fr;
   }
   @media screen and (max-width: $tablets) {
     grid-template-columns: 1fr minmax(310px, 420px) 1fr;
-    grid-template-rows: 1fr 200px 400px minmax(400px, 450px);
-    padding: 100px 15px 0px;
   }
   @media screen and (max-width: $phones) {
     gap: 0px;
-    padding: 100px 15px 0px;
-    grid-template-rows: 1fr 200px 400px 550px;
+    grid-template-rows: 1fr 100px auto;
   }
   @media screen and (orientation: landscape) and (max-device-width: $tablets) {
     grid-template-columns: 1fr minmax(290px, 500px) 1fr;
@@ -136,7 +132,8 @@
   #meetus-title {
     grid-column: 2/-2;
     grid-row: 2;
-    margin: 70px 0;
+    align-self: flex-end;
+    // margin: 70px 0;
     color: $light-grey;
     font-size: 3rem;
     font-weight: bold;
@@ -146,13 +143,14 @@
     grid-column: 2/3;
     grid-row: 3;
     display: flex;
+    display: none;
     flex-direction: column;
     @media screen and (max-width: $tablets) {
       grid-column: 2;
     }
   }
   #meetus-info {
-    grid-column: 3/4;
+    grid-column: 2/4;
     grid-row: 3;
     display: flex;
     align-items: center;
@@ -162,8 +160,8 @@
     white-space: pre-wrap;
     letter-spacing: 0.05rem;
     line-height: 1.5rem;
+    text-align: center;
     @media screen and (max-width: $special) {
-      grid-row: 4;
       grid-column: 2;
       padding: 0px;
     }
