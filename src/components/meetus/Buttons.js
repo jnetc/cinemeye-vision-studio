@@ -17,7 +17,7 @@ const Buttons = () => {
         <Icons icon="telephone" />
       </a>
       <a
-        href="tg://resolve?domain=timamih_com"
+        href="https://telegram.me/timamih_com"
         role="button"
         title="telegram contact"
         aria-label="telegram contact timamih_com"
