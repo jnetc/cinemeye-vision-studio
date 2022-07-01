@@ -1,23 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import React, { useState, useEffect, useRef } from 'react';
+// import { graphql, useStaticQuery } from 'gatsby';
 //Style
 import '../../sass/components/mobcontact.scss';
 // Components
-import PhoneIcon from '../icons/Phone';
-import WappIcon from '../icons/Wapp';
-import EmailIcon from '../icons/Email';
 import InfoIcon from '../icons/Info';
+import { Icons } from '../meetus/buttons/Icons';
 
 const MobContact = () => {
   // Получаем данные с CMS
-  const query = useStaticQuery(ctx);
-  const context = query?.datoCmsContact;
+  // const query = useStaticQuery(ctx);
+  // const context = query?.datoCmsContact;
+  const refStart = useRef(null);
+  const refEnd = useRef(null);
 
   const [action, setAction] = useState(false);
 
   const toggle = () => setAction(!action);
 
   useEffect(() => {
+    refStart.current.addEventListener('transitionstart', event => {
+      event.target.closest('.boxes').classList.add('filter');
+    });
+    refEnd.current.addEventListener('transitionend', event => {
+      event.target.closest('.boxes').classList.remove('filter');
+    });
     const body = document.body;
     const eventOutOfEl = e => {
       const boxes = e.target.closest('.boxes');
@@ -26,11 +32,18 @@ const MobContact = () => {
       }
     };
     body.addEventListener('click', eventOutOfEl);
+    return () => {
+      refStart.current.removeEventListener('transitionstart', () => {});
+      refEnd.current.addEventListener('transitionend', () => {});
+      refStart.current = null;
+      refEnd.current = null;
+      body.removeEventListener('click', eventOutOfEl);
+    };
   }, []);
 
   return (
     <>
-      <div className={action ? 'boxes action' : 'boxes'}>
+      <div className={action ? 'boxes action ' : 'boxes '}>
         <div
           id="info"
           role="button"
@@ -38,31 +51,49 @@ const MobContact = () => {
           tabIndex={0}
           className={action ? 'box action' : 'box'}
           onKeyPress={toggle}
-          onClick={toggle}>
+          onClick={toggle}
+        >
           <InfoIcon />
         </div>
         <div className="box" id="info-anim" />
-        <a href={`tel:${context?.phone}`} className="box" id="phone">
-          <span>Phone number</span>
-          <PhoneIcon />
+
+        <a
+          href="tel:+358453491091"
+          role="button"
+          title="phone number"
+          aria-label="phone number +358453491091"
+          className="box"
+          id="phone"
+          ref={refStart}
+        >
+          <Icons icon="telephone" />
         </a>
-        <a href={`mailto:${context?.email}`} className="box" id="email">
-          <span>Email</span>
-          <EmailIcon />
+        <a
+          href="https://t.me/timamih_com"
+          role="button"
+          title="telegram contact"
+          aria-label="telegram contact timamih_com"
+          className="box"
+          id="telega"
+        >
+          <Icons icon="telegram" />
         </a>
-        <a href={`${context?.whatsapp}`} className="box" id="wapp">
-          <span>Whatapp</span>
-          <WappIcon />
+        <a
+          href="https://api.whatsapp.com/send?phone=358453491091"
+          role="button"
+          title="whatsapp contact"
+          aria-label="whatsapp contact 358453491091"
+          className="box"
+          id="wapp"
+          ref={refEnd}
+        >
+          <Icons icon="whatsapp" />
         </a>
       </div>
       <svg id="svg">
         <defs>
           <filter id="filter">
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="10"
-              result="blur"
-            />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
             <feColorMatrix
               in="blur"
               mode="matrix"
@@ -79,12 +110,12 @@ const MobContact = () => {
 export default MobContact;
 
 // GrapQL запрос
-const ctx = graphql`
-  query {
-    datoCmsContact {
-      phone
-      whatsapp
-      email
-    }
-  }
-`;
+// const ctx = graphql`
+//   query {
+//     datoCmsContact {
+//       phone
+//       whatsapp
+//       email
+//     }
+//   }
+// `;
