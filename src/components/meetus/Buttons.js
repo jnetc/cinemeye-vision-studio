@@ -17,7 +17,7 @@ const Buttons = () => {
         <Icons icon="telephone" />
       </a>
       <a
-        href="https://t.me/timamih_com"
+        href="tg://resolve?domain=timamih_com"
         role="button"
         title="telegram contact"
         aria-label="telegram contact timamih_com"
@@ -25,7 +25,7 @@ const Buttons = () => {
         <Icons icon="telegram" />
       </a>
       <a
-        href="https://api.whatsapp.com/send?phone=358453491091"
+        href="https://wa.me/358453491091"
         role="button"
         title="whatsapp contact"
         aria-label="whatsapp contact 358453491091"
