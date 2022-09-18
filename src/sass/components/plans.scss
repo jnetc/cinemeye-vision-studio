@@ -75,8 +75,7 @@
       z-index: -5;
       &.popular {
         border-color: transparentize($blue, 0.5);
-        box-shadow: 0 8px 8px transparentize($blue, 0.9),
-          0 20px 20px transparentize($blue, 0.95);
+        box-shadow: 0 8px 8px transparentize($blue, 0.9), 0 20px 20px transparentize($blue, 0.95);
       }
       &.select {
         background-color: darken($black, 2);
@@ -211,7 +210,7 @@
       display: none;
       justify-content: center;
       align-items: center;
-      margin-bottom: 50px;
+      margin-block-start: 2rem;
       position: relative;
       color: $light-grey;
       font-size: 1rem;
@@ -268,6 +267,7 @@
 
     /// PLANS FEATURES
     .plan_features {
+      padding-block-start: 3rem;
       display: grid;
       grid-template-columns: 16px 1fr;
       gap: 15px;
@@ -339,8 +339,7 @@
 
     &:hover .plan_bg {
       border-color: $magenta;
-      box-shadow: 0 8px 8px transparentize($magenta, 0.9),
-        0 20px 20px transparentize($magenta, 0.8);
+      box-shadow: 0 8px 8px transparentize($magenta, 0.9), 0 20px 20px transparentize($magenta, 0.8);
       transform: scale(1.02);
       z-index: -1;
     }

@@ -52,16 +52,14 @@ const Plan = ({ context }) => {
       <div className="plan_price">
         {price}€{from && <div className="plan_from">{from}</div>}
       </div>
-      <button
-        type="button"
-        className="btn"
-        onClick={() => selectHandler(refSelect)}>
+      {/* <button type="button" className="btn" onClick={() => selectHandler(refSelect)}>
         {selected ? 'selected' : service1 ? 'select' : `let's talk`}
-      </button>
+      </button> */}
       <button
         type="button"
         className={features ? 'plan_btn-mob active' : 'plan_btn-mob'}
-        onClick={() => featureToggle()}>
+        onClick={() => featureToggle()}
+      >
         <div className={features ? 'plan_btn-show active' : 'plan_btn-show'} />
         {features ? 'hide features' : 'show features'}
       </button>
