@@ -11,7 +11,6 @@ import Plans from '../components/plans/Plans';
 import Meetus from '../components/meetus/Meetus';
 import Credits from '../components/credits/Credits';
 import Youtube from '../components/modals/Youtube';
-import Mailform from '../components/modals/Mailform';
 import MobContact from '../components/mob-contact/MobContact';
 
 const IndexPage = () => {
@@ -34,7 +33,6 @@ const IndexPage = () => {
         meta={helmet.meta}
       />
       <Youtube />
-      <Mailform />
       <Header />
       <Intro />
       <Values />

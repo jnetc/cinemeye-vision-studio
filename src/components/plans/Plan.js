@@ -29,7 +29,7 @@ const Plan = ({ context }) => {
     customService,
   };
 
-  const { select, selectHandler } = useStore();
+  const { select } = useStore();
 
   const [features, setFeatures] = useState(false);
   const featureToggle = () => setFeatures(!features);

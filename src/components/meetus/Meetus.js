@@ -3,7 +3,7 @@ import React from 'react';
 import '../../sass/components/meetus.scss';
 // Components
 import Slider from './Slider';
-// import Meetform from './Meetform';
+
 import Info from './Info';
 import Buttons from './Buttons';
 
@@ -12,7 +12,6 @@ const Meetus = () => {
     <section id="meetus">
       <Slider />
       <span id="meetus-title">Let's talk</span>
-      {/* <Meetform /> */}
       <Buttons />
       <Info />
     </section>

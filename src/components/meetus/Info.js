@@ -1,7 +1,5 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-// Styles
-import '../../sass/components/mailform.scss';
 // Context
 import { useStore } from '../store/Store';
 import { localeHandler } from '../store/remapQueries';

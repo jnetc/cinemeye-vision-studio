@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "ЖнецЪ / Jnetc",
   "dependencies": {
-    "emailjs-com": "^3.2.0",
     "gatsby": "^3.14.0",
     "gatsby-plugin-image": "^1.14.0",
     "gatsby-plugin-manifest": "^3.14.0",
@@ -17,7 +16,7 @@
     "gatsby-source-filesystem": "^3.14.0",
     "gatsby-transformer-sharp": "^3.14.0",
     "netlify-cli": "^6.9.17",
-    "node-sass": "^6.0.1",
+    "node-sass": "^8.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
