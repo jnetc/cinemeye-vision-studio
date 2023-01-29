@@ -65,6 +65,9 @@
       align-self: center;
       border-radius: 50%;
       border: 10px solid $dark-blue;
+      img {
+        border-radius: 50%;
+      }
       @media screen and (max-width: $tablets) {
         justify-self: center;
       }
