@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-// import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 //Style
 import '../../sass/components/mobcontact.scss';
 // Components
@@ -8,10 +8,12 @@ import { Icons } from '../meetus/buttons/Icons';
 
 const MobContact = () => {
   // Получаем данные с CMS
-  // const query = useStaticQuery(ctx);
-  // const context = query?.datoCmsContact;
+  const query = useStaticQuery(ctx);
+  const context = query?.datoCmsContact;
   const refStart = useRef(null);
   const refEnd = useRef(null);
+
+  console.log(context);
 
   const [action, setAction] = useState(false);
 
@@ -50,7 +52,6 @@ const MobContact = () => {
           aria-label="button"
           tabIndex={0}
           className={action ? 'box action' : 'box'}
-          onKeyPress={toggle}
           onClick={toggle}
         >
           <InfoIcon />
@@ -58,10 +59,10 @@ const MobContact = () => {
         <div className="box" id="info-anim" />
 
         <a
-          href="tel:+358453491091"
+          href={`tel:${context.phone}`}
           role="button"
           title="phone number"
-          aria-label="phone number +358453491091"
+          aria-label={`phone number ${context.phone}`}
           className="box"
           id="phone"
           ref={refStart}
@@ -69,20 +70,20 @@ const MobContact = () => {
           <Icons icon="telephone" />
         </a>
         <a
-          href="https://telegram.me/timamih_com"
+          href={`https://telegram.me/${context.telegram.split('@')[1]}`}
           role="button"
           title="telegram contact"
-          aria-label="telegram contact timamih_com"
+          aria-label={`telegram contact ${context.telegram}`}
           className="box"
           id="telega"
         >
           <Icons icon="telegram" />
         </a>
         <a
-          href="https://wa.me/358453491091"
+          href={`https://wa.me/${context.phone.split('+')[1]}`}
           role="button"
           title="whatsapp contact"
-          aria-label="whatsapp contact 358453491091"
+          aria-label={`whatsapp contact ${context.phone.split('+')[1]}`}
           className="box"
           id="wapp"
           ref={refEnd}
@@ -110,12 +111,12 @@ const MobContact = () => {
 export default MobContact;
 
 // GrapQL запрос
-// const ctx = graphql`
-//   query {
-//     datoCmsContact {
-//       phone
-//       whatsapp
-//       email
-//     }
-//   }
-// `;
+const ctx = graphql`
+  query {
+    datoCmsContact {
+      phone
+      whatsapp
+      telegram
+    }
+  }
+`;

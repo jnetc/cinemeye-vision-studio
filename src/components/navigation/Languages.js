@@ -31,19 +31,14 @@ const Languages = () => {
         className="lang"
         onClick={() => {
           ctx.langHandler(l.name);
-        }}>
+        }}
+      >
         {l.lang}
       </button>
     );
   });
   return (
-    <div
-      id="lang-btn"
-      className={langMenu ? 'langs-show' : ''}
-      role="button"
-      tabIndex={0}
-      onKeyPress={() => toggle()}
-      onClick={() => toggle()}>
+    <div id="lang-btn" className={langMenu ? 'langs-show' : ''} role="button" tabIndex={0} onClick={() => toggle()}>
       {ctx?.lang}
       <div id="langs">{languages}</div>
     </div>

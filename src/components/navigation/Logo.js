@@ -9,7 +9,7 @@ const Logo = () => {
       }
     }
   `);
-  if (!data?.file?.publicURL) {
+  if (!data?.file.publicURL) {
     return null;
   }
   return (

@@ -38,20 +38,14 @@ function Seo({ meta, lang, modal, select, menu }) {
       <meta property="og:type" content="website" />
       <meta property="og:url" content={meta?.url} />
       <meta property="og:title" content={context?.siteName} />
-      <meta
-        property="og:description"
-        content={context?.fallbackSeo?.description}
-      />
+      <meta property="og:description" content={context?.fallbackSeo?.description} />
       <meta property="og:image" content={meta?.image} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={meta?.url} />
       <meta property="twitter:title" content={context?.siteName} />
-      <meta
-        property="twitter:description"
-        content={context?.fallbackSeo?.description}
-      />
+      <meta property="twitter:description" content={context?.fallbackSeo?.description} />
       <meta property="twitter:image" content={meta?.image} />
 
       <meta name="robots" content="index, follow" />
@@ -61,7 +55,7 @@ function Seo({ meta, lang, modal, select, menu }) {
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
         as="style"
         type="text/css"
-      ></link>
+      />
       <title>{context?.siteName}</title>
       <body className={active ? `modal-show` : ''} />
     </Helmet>
