@@ -13,8 +13,6 @@ const MobContact = () => {
   const refStart = useRef(null);
   const refEnd = useRef(null);
 
-  console.log(context);
-
   const [action, setAction] = useState(false);
 
   const toggle = () => setAction(!action);
