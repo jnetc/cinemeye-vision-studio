@@ -15,6 +15,9 @@ const Buttons = () => {
       <a href={`tel:${context.phone}`} role="button" title="phone number" aria-label={`phone number ${context.phone}`}>
         <Icons icon="telephone" />
       </a>
+      <a href="https://www.instagram.com/cinemeyevision/" role="button" title="instagram" aria-label="https://www.instagram.com/cinemeyevision/">
+        <Icons icon="instagram" />
+      </a>
       <a
         href={`https://telegram.me/${context.telegram.split('@')[1]}`}
         role="button"
