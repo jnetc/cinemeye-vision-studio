@@ -196,6 +196,16 @@
     background-color: darken($color: $blue, $amount: 5%);
   }
 
+  .instagram-button {
+    border-color: opacify(rgba($white, 0.3), 0.1);
+    background-color: $magenta;
+  }
+
+  .instagram-button:hover {
+    background-color: darken($color: $blue, $amount: 5%);
+  }
+
+
   .whatsapp-button {
     border-color: opacify(rgba($white, 0.3), 0.1);
     background-color: $green;
