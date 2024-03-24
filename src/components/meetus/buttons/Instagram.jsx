@@ -1,5 +1,5 @@
 import React from 'react';
-export const WhatsApp = () => (
+export const Instagram = () => (
   <div className="contact-button whatsapp-button click">
     <svg
       width="48"
